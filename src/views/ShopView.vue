@@ -1,8 +1,11 @@
 <template>
-  <div>
+  <div class="shop">
     Clicking this button will redirect you to the shop. You can return to the
     homepage otherwise.
-    <a href="https://virginsintltrading.fygaroshops.com/products/">
+    <a
+      class="btn-book-a-table"
+      href="https://virginsintltrading.fygaroshops.com/products/"
+    >
       Take me to the shop
     </a>
     <RouterLink :to="{ name: 'home' }">Return to home</RouterLink>
@@ -18,4 +21,12 @@ import { onMounted } from "vue";
 // });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+@media (min-width: 1024px) {
+  .shop {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+}
+</style>

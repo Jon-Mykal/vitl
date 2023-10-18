@@ -10,7 +10,7 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/abou",
+      path: "/about",
       name: "about",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
@@ -25,6 +25,15 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/ShopView.vue"),
+    },
+    {
+      path: "/contact-us",
+      name: "contact",
+      // redirect: "https://virginsintltrading.fygaroshops.com",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/ContactUsView.vue"),
     },
   ],
 });

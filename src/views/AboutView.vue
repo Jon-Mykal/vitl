@@ -17,9 +17,20 @@ The job of guaranteeing a great customer experience comes through the combined e
     </section>
    </section>
    <section class="row">
+
+    <section class="col">
+      <img src="../assets/img/Impact image.jpg" alt="">
+    </section>
+    <section class="col">
       <h1>
         We're Making a Positive Impact Across Jamaica.
       </h1>
+      <p>
+        Virgin’s International Trading Limited is known for its community support and civic duties. 
+        Our community work includes the adoption of Top Hill Primary School in Manchester and donations to various police community projects. 
+        We believe in serving our community for a better tomorrow.
+      </p>
+    </section>
    </section>
   </div>
 </template>

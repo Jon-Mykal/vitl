@@ -8,8 +8,8 @@
       <div>
         <h4>Address</h4>
         <p>
-          A108 Adam Street <br>
-          New York, NY 535022 - US<br>
+            18 Chisholm Avenue <br>
+            Kingston 13, Jamaica<br>
         </p>
       </div>
 
@@ -20,8 +20,8 @@
       <div>
         <h4>Reservations</h4>
         <p>
-          <strong>Phone:</strong> +1 5589 55488 55<br>
-          <strong>Email:</strong> info@example.com<br>
+          <strong>Phone:</strong> (876) 754-1318<br>
+          <strong>Email:</strong> sales@virginsintltrading.com<br>
         </p>
       </div>
     </div>

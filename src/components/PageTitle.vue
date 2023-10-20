@@ -11,4 +11,8 @@ const props = defineProps({
 });
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+.row {
+  background-color: #ce1212;
+}
+</style>

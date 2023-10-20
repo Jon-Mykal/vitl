@@ -1,5 +1,7 @@
 <script setup>
 import PageTitle from "../components/PageTitle.vue";
+import image from  '../assets/img/Impact image.jpg' 
+
 </script>
 
 <template>
@@ -38,7 +40,7 @@ import PageTitle from "../components/PageTitle.vue";
     </section>
     <section class="row">
       <section class="col">
-        <img src="assets/img/Impact image.jpg" alt="" />
+        <img :src='image' alt="" />
       </section>
       <section class="col">
         <h1>We're Making a Positive Impact Across Jamaica.</h1>

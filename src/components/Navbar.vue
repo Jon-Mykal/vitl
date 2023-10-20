@@ -16,9 +16,7 @@
         <nav id="navbar" class="navbar">
           <ul>
             <li>
-              <RouterLink :to="{ name: 'home' }" class="active"
-                >Home</RouterLink
-              >
+              <RouterLink :to="{ name: 'home' }">Home</RouterLink>
             </li>
             <li>
               <RouterLink :to="{ name: 'about' }">About</RouterLink>

@@ -4,7 +4,7 @@
     <div class="container aos-init aos-animate" data-aos="fade-up">
       <div class="section-header">
         <h2>Contact</h2>
-        <p>Need Help? <span>Contact U</span></p>
+        <p>Need Help? <span>Contact Us</span></p>
       </div>
 
       <div class="mb-3">

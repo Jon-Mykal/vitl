@@ -365,14 +365,14 @@ section {
 
   .navbar a:hover:before,
   .navbar li:hover > a:before,
-  .navbar .active:before {
+  .navbar .router-link-active.router-link-exact-active:before {
     visibility: visible;
     width: 100%;
   }
 
   .navbar a:hover,
-  .navbar .active,
-  .navbar .active:focus,
+  .navbar .router-link-active.router-link-exact-active,
+  .navbar .router-link-active.srouter-link-exact-active:focus,
   .navbar li:hover > a {
     color: #000;
   }
@@ -505,8 +505,8 @@ section {
     color: #000;
   }
 
-  .navbar .active,
-  .navbar .active:focus {
+  .navbar .router-link-active.router-link-exact-active,
+  .navbar .router-link-active.router-link-exact-active:focus {
     color: #000;
     border-color: var(--color-primary);
   }

@@ -3,8 +3,8 @@ import PageTitle from "../components/PageTitle.vue";
 </script>
 
 <template>
+  <PageTitle title="About" />
   <div class="about mx-5">
-    <PageTitle title="About" />
     <section class="row">
       <section class="col">
         <h1>We're tightly connected to our communities</h1>

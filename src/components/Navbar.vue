@@ -10,8 +10,7 @@
           class="logo d-flex align-items-center me-auto me-lg-0"
         >
           <!-- Uncomment the line below if you also wish to use an image logo -->
-          <img src="assets/img/logo.png" alt="">
-        
+          <img src="assets/img/logo.png" alt="" />
         </a>
 
         <nav id="navbar" class="navbar">
@@ -28,7 +27,7 @@
               <RouterLink :to="{ name: 'contact' }">Contact Us</RouterLink>
             </li>
             <li>
-              <RouterLink :to="{ name: 'shop' }">Our Shop</RouterLink>
+              <RouterLink :to="{ name: 'shop' }">Shop</RouterLink>
             </li>
           </ul>
         </nav>

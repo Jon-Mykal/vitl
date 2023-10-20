@@ -1,17 +1,21 @@
 <template>
+  <PageTitle title="Contact" />
   <section id="contact" class="contact">
     <div class="container aos-init aos-animate" data-aos="fade-up">
       <div class="section-header">
         <h2>Contact</h2>
-        <p>Need Help? <span>Contact Us</span></p>
+        <p>Need Help? <span>Contact U</span></p>
       </div>
 
       <div class="mb-3">
-        <iframe style="border: 0; width: 100%; height: 350px"
-        src="https://maps.google.com/maps?q=18%20chisolm%20avenue&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          frameborder="0" allowfullscreen=""></iframe>
+        <iframe
+          style="border: 0; width: 100%; height: 350px"
+          src="https://maps.google.com/maps?q=18%20chisolm%20avenue&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          frameborder="0"
+          allowfullscreen=""
+        ></iframe>
       </div>
-    
+
       <!-- End Google Maps -->
 
       <div class="row gy-4">
@@ -63,20 +67,52 @@
         <!-- End Info Item -->
       </div>
 
-      <form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4">
+      <form
+        action="forms/contact.php"
+        method="post"
+        role="form"
+        class="php-email-form p-3 p-md-4"
+      >
         <div class="row">
           <div class="col-xl-6 form-group">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="" />
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              id="name"
+              placeholder="Your Name"
+              required=""
+            />
           </div>
           <div class="col-xl-6 form-group">
-            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="" />
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              id="email"
+              placeholder="Your Email"
+              required=""
+            />
           </div>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="" />
+          <input
+            type="text"
+            class="form-control"
+            name="subject"
+            id="subject"
+            placeholder="Subject"
+            required=""
+          />
         </div>
         <div class="form-group">
-          <textarea class="form-control" name="message" rows="5" placeholder="Message" required=""></textarea>
+          <textarea
+            class="form-control"
+            name="message"
+            rows="5"
+            placeholder="Message"
+            required=""
+          ></textarea>
         </div>
         <div class="my-3">
           <div class="loading">Loading</div>
@@ -92,12 +128,14 @@
   </section>
 </template>
 
-<script setup></script>
+<script setup>
+import PageTitle from "../components/PageTitle.vue";
+</script>
 
 <style lang="css" scoped>
 @media (min-width: 1024px) {
   .contact {
-    min-height: 60vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
   }

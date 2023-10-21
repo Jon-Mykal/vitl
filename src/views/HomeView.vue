@@ -63,21 +63,21 @@ backdrop-filter: blur(4.4px);
           data-aos-delay="200" role="tablist">
 
           <li class="nav-item" role="presentation">
-            <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#menu-starters" aria-selected="false" role="tab"
+            <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#menu-aluminium" aria-selected="false" role="tab"
               tabindex="-1">
               <h4>Aluminium</h4>
             </a>
           </li><!-- End tab nav item -->
 
           <li class="nav-item" role="presentation">
-            <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#menu-breakfast" aria-selected="true"
+            <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#menu-balcony" aria-selected="true"
               role="tab">
               <h4>Balcony</h4>
             </a><!-- End tab nav item -->
 
           </li>
           <li class="nav-item" role="presentation">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch" aria-selected="false" role="tab"
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-shower" aria-selected="false" role="tab"
               tabindex="-1">
               <h4>Shower</h4>
             </a>
@@ -96,8 +96,8 @@ backdrop-filter: blur(4.4px);
             <div class="row gy-5">
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="assets/img/menu/menu-item-1.png"
-                    class="menu-img img-fluid" alt=""></a>
+                <!-- <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="assets/img/menu/menu-item-1.png"
+                    class="menu-img img-fluid" alt=""></a> -->
                 <h4>Magnam Tiste</h4>
                 <p class="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -192,8 +192,8 @@ backdrop-filter: blur(4.4px);
             <div class="row gy-5">
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="assets/img/menu/menu-item-1.png"
-                    class="menu-img img-fluid" alt=""></a>
+                <!-- <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="assets/img/menu/menu-item-1.png"
+                    class="menu-img img-fluid" alt=""></a> -->
                 <h4>Magnam Tiste</h4>
                 <p class="ingredients">
                   Lorem, deren, trataro, filede, nerada

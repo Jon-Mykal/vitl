@@ -6,13 +6,13 @@ import image from  '../assets/img/Impact image.jpg'
 
 <template>
   <PageTitle title="About" />
-  <div class="about mx-5">
-    <section class="row">
-      <section class="col">
-        <h1>We're tightly connected to our communities</h1>
+  <div class="about mx-5 px-sm-5">
+    <section class="row pb-0">
+      <section class="col-sm-4 col-md-6 pt-0 pb-3">
+        <h1 class="display-6 fw-bold primary">We're tightly connected to our communities</h1>
       </section>
-      <section class="col">
-        <p>
+      <section class="offset-sm-2 offset-md-0 col-sm-6 col-md-6 pt-1">
+        <p class="fs-5">
           Virgin’s international trading one of the leading distributors of
           aluminum products is located at 18 Chisholm Ave, Kingston 13 and was
           established out of a need to provide aluminum fabricators with an
@@ -38,13 +38,15 @@ import image from  '../assets/img/Impact image.jpg'
         </p>
       </section>
     </section>
-    <section class="row">
-      <section class="col">
-        <img :src='image' alt="" />
+    <section class="row pt-2 pt-sm-3">
+      <section class="col-sm-4 col-md-6 pb-2">
+        <img :src='image' class="img-fluid" alt="" />
+        <!-- <img class="img-fluid" src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+ alt="" /> -->
       </section>
-      <section class="col">
-        <h1>We're Making a Positive Impact Across Jamaica.</h1>
-        <p>
+      <section class="offset-sm-2 offset-md-0 col-sm-6 col-md-6">
+        <h1 class="display-6 fw-bold primary">We're Making a Positive Impact Across Jamaica.</h1>
+        <p class="fs-5">
           Virgin’s International Trading Limited is known for its community
           support and civic duties. Our community work includes the adoption of
           Top Hill Primary School in Manchester and donations to various police
@@ -57,9 +59,13 @@ import image from  '../assets/img/Impact image.jpg'
 </template>
 
 <style>
+
+.primary {
+  color: var(--color-primary);
+}
 @media (min-width: 1024px) {
   .about {
-    min-height: 100vh;
+ 
 
     align-items: center;
   }

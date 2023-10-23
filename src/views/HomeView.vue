@@ -37,7 +37,7 @@ backdrop-filter: blur(4.4px);
   <main class="main">
     <section id="welcome">
       <div class="section-header">
-        <p>Welcome to <span>Virgin’s International Trading</span></p>
+        <p>Welcome to <span class="fw-bold">Virgin’s International Trading</span></p>
       </div>
 
       <div class="row justify-content-center">
@@ -56,15 +56,15 @@ backdrop-filter: blur(4.4px);
       <div class="container aos-init aos-animate" data-aos="fade-up">
 
         <div class="section-header">
-          <p>Featured <span>Categories</span></p>
+          <p>Featured <span class="fw-bold">Categories</span></p>
         </div>
 
         <ul class="nav nav-tabs d-flex justify-content-center aos-init aos-animate" data-aos="fade-up"
           data-aos-delay="200" role="tablist">
 
           <li class="nav-item" role="presentation">
-            <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#menu-aluminium" aria-selected="false" role="tab"
-              tabindex="-1">
+            <a class="nav-link show" data-bs-toggle="tab" data-bs-target="#menu-aluminium" aria-selected="false"
+              role="tab" tabindex="-1">
               <h4>Aluminium</h4>
             </a>
           </li><!-- End tab nav item -->
@@ -96,8 +96,10 @@ backdrop-filter: blur(4.4px);
             <div class="row gy-5">
 
               <div class="col-lg-4 menu-item">
-                <!-- <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="assets/img/menu/menu-item-1.png"
-                    class="menu-img img-fluid" alt=""></a> -->
+                <a href="assets/img/menu/menu-item-1.png" class="glightbox">
+                  <img class="img-fluid"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+                    alt="" /> </a>
                 <h4>Magnam Tiste</h4>
                 <p class="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -108,8 +110,10 @@ backdrop-filter: blur(4.4px);
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <!-- <a href="assets/img/menu/menu-item-2.png" class="glightbox"><img src="assets/img/menu/menu-item-2.png"
-                    class="menu-img img-fluid" alt=""></a> -->
+                <a href="assets/img/menu/menu-item-1.png" class="glightbox">
+                  <img class="img-fluid"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+                    alt="" /> </a>
                 <h4>Aut Luia</h4>
                 <p class="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -120,8 +124,10 @@ backdrop-filter: blur(4.4px);
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <!-- <a href="assets/img/menu/menu-item-3.png" class="glightbox"><img src="assets/img/menu/menu-item-3.png"
-                    class="menu-img img-fluid" alt=""></a> -->
+                <a href="assets/img/menu/menu-item-1.png" class="glightbox">
+                  <img class="img-fluid"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+                    alt="" /> </a>
                 <h4>Est Eligendi</h4>
                 <p class="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -143,8 +149,10 @@ backdrop-filter: blur(4.4px);
             <div class="row gy-5">
 
               <div class="col-lg-4 menu-item">
-                <!-- <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="assets/img/menu/menu-item-1.png"
-                    class="menu-img img-fluid" alt=""></a> -->
+                <a href="assets/img/menu/menu-item-1.png" class="glightbox">
+                  <img class="img-fluid"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+                    alt="" /> </a>
                 <h4>Magnam Tiste</h4>
                 <p class="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -155,8 +163,10 @@ backdrop-filter: blur(4.4px);
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <!-- <a href="assets/img/menu/menu-item-2.png" class="glightbox"><img src="assets/img/menu/menu-item-2.png"
-                    class="menu-img img-fluid" alt=""></a> -->
+                <a href="assets/img/menu/menu-item-1.png" class="glightbox">
+                  <img class="img-fluid"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+                    alt="" /> </a>
                 <h4>Aut Luia</h4>
                 <p class="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -167,8 +177,10 @@ backdrop-filter: blur(4.4px);
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <!-- <a href="assets/img/menu/menu-item-3.png" class="glightbox"><img src="assets/img/menu/menu-item-3.png"
-                    class="menu-img img-fluid" alt=""></a> -->
+                <a href="assets/img/menu/menu-item-1.png" class="glightbox">
+                  <img class="img-fluid"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+                    alt="" /> </a>
                 <h4>Est Eligendi</h4>
                 <p class="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -192,8 +204,10 @@ backdrop-filter: blur(4.4px);
             <div class="row gy-5">
 
               <div class="col-lg-4 menu-item">
-                <!-- <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="assets/img/menu/menu-item-1.png"
-                    class="menu-img img-fluid" alt=""></a> -->
+                <a href="assets/img/menu/menu-item-1.png" class="glightbox">
+                  <img class="img-fluid"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+                    alt="" /> </a>
                 <h4>Magnam Tiste</h4>
                 <p class="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -204,8 +218,10 @@ backdrop-filter: blur(4.4px);
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <!-- <a href="assets/img/menu/menu-item-2.png" class="glightbox"><img src="assets/img/menu/menu-item-2.png"
-        class="menu-img img-fluid" alt=""></a> -->
+                <a href="assets/img/menu/menu-item-1.png" class="glightbox">
+                  <img class="img-fluid"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+                    alt="" /> </a>
                 <h4>Aut Luia</h4>
                 <p class="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -216,8 +232,10 @@ backdrop-filter: blur(4.4px);
               </div><!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <!-- <a href="assets/img/menu/menu-item-3.png" class="glightbox"><img src="assets/img/menu/menu-item-3.png"
-        class="menu-img img-fluid" alt=""></a> -->
+                <a href="assets/img/menu/menu-item-1.png" class="glightbox">
+                  <img class="img-fluid"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+                    alt="" /> </a>
                 <h4>Est Eligendi</h4>
                 <p class="ingredients">
                   Lorem, deren, trataro, filede, nerada
@@ -233,9 +251,8 @@ backdrop-filter: blur(4.4px);
 
 
 
-        </div>
-
       </div>
-    </section>
-  </main>
-</template>
+
+    </div>
+  </section>
+</main></template>

@@ -1,6 +1,8 @@
 <template>
-  <section class="row">
-    <h1>{{ title }}</h1>
+  <section class="container-fluid">
+    <section class="row px-5">
+      <h1 class="px-5 mx-5 text-white fw-bolder display-4">{{ title }}</h1>
+    </section>
   </section>
 </template>
 

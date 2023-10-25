@@ -58,7 +58,7 @@
             <div>
               <h3>Opening Hours</h3>
               <div>
-                <strong>Mon-Sat:</strong> 8AM - 5PM <br>
+                <strong>Mon-Fri:</strong> 8AM - 5PM <br>
                 <strong>Saturday - Sunday:</strong> Closed
               </div>
             </div>

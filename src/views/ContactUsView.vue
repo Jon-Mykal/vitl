@@ -3,7 +3,6 @@
   <section id="contact" class="contact">
     <div class="container aos-init aos-animate" data-aos="fade-up">
       <div class="section-header">
-        <h2>Contact</h2>
         <p>Need Help? <span>Contact Us</span></p>
       </div>
 
@@ -35,7 +34,7 @@
             <i class="icon bi bi-envelope flex-shrink-0"></i>
             <div>
               <h3>Email Us</h3>
-              <p>sales@virginsintltrading.com</p>
+              <p>virgins.intltrading18@gmail.com</p>
             </div>
           </div>
         </div>
@@ -46,7 +45,8 @@
             <i class="icon bi bi-telephone flex-shrink-0"></i>
             <div>
               <h3>Call Us</h3>
-              <p>(876) 754-1318 / 906-0736</p>
+              <p><strong>Phone: </strong>(876) 906-1934</p>
+              <p><strong>WhatsApp/Phone: </strong>(876) 335-9795</p>
             </div>
           </div>
         </div>
@@ -58,8 +58,8 @@
             <div>
               <h3>Opening Hours</h3>
               <div>
-                <strong>Mon-Sat:</strong> 11AM - 23PM;
-                <strong>Sunday:</strong> Closed
+                <strong>Mon-Sat:</strong> 8AM - 5PM <br>
+                <strong>Saturday - Sunday:</strong> Closed
               </div>
             </div>
           </div>

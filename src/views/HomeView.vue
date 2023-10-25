@@ -36,11 +36,13 @@ backdrop-filter: blur(4.4px);
   </section>
   <main class="main">
     <section id="welcome">
+      <section class="container">
       <div class="section-header">
         <p>Welcome to <span class="fw-bold">Virgin’s International Trading</span></p>
       </div>
 
-      <div class="row justify-content-center">
+      
+        <div class="row justify-content-center">
         <div class="col offset-2 col-lg-10 col-md-10 mx-5" data-aos="fade-up" data-aos-delay="300">
           <p class="lead">
             We're here to provide you with a wide range of hardware supplies for you to either get started or finish
@@ -51,6 +53,7 @@ backdrop-filter: blur(4.4px);
           </p>
         </div>
       </div>
+    </section>
     </section>
     <section id="menu" class="menu">
       <div class="container aos-init aos-animate" data-aos="fade-up">
@@ -447,3 +450,8 @@ backdrop-filter: blur(4.4px);
     </section>
   </main>
 </template>
+<style lang="css" scoped>
+.menu {
+  background-color: #f8f8f8;
+}
+</style>

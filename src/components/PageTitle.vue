@@ -1,8 +1,10 @@
 <template>
-  <section class="container-fluid">
-    <section class="row px-5">
-      <h1 class="px-5 mx-5 text-white fw-bolder display-4">{{ title }}</h1>
+  <section class="main-bg py-0 my-0">
+    <section class="container pb-4">
+    <section class="row">
+      <h1 class="px-5  text-white fw-bolder display-4">{{ title }}</h1>
     </section>
+  </section>
   </section>
 </template>
 
@@ -14,7 +16,8 @@ const props = defineProps({
 </script>
 
 <style lang="css" scoped>
-.row {
+.main-bg {
   background-color: #ce1212;
+
 }
 </style>

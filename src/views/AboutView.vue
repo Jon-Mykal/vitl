@@ -6,13 +6,12 @@ import image from  '../assets/img/Impact image.jpg'
 
 <template>
   <PageTitle title="About" />
-  <div class="about mx-5 px-sm-5">
+  <div class="about container px-sm-5">
     <section class="row pb-0">
       <section class="col-sm-4 col-md-6 pt-0 pb-3">
         <h1 class="display-6 fw-bold primary">We're tightly connected to our communities</h1>
       </section>
-      <section class="offset-sm-2 offset-md-0 col-sm-6 col-md-6 pt-1">
-
+      <section class="offset-sm-2 offset-md-0 col-sm-6 col-md-6 pt-1 px-4">
          <p>
           Virgin’s international trading one of the leading distributors of
           aluminum products is located at 18 Chisholm Ave, Kingston 13 and was
@@ -56,9 +55,9 @@ import image from  '../assets/img/Impact image.jpg'
         <!-- <img class="img-fluid" src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
  alt="" /> -->
       </section>
-      <section class="offset-sm-2 offset-md-0 col-sm-6 col-md-6">
+      <section class="offset-sm-2 offset-md-0 col-sm-6 col-md-6 px-4">
         <h1 class="display-6 fw-bold primary">We're Making a Positive Impact Across Jamaica.</h1>
-        <p class="fs-5">
+        <p class="fs-6">
           Virgin’s International Trading Limited is known for its community
           support and civic duties. Our community work includes the adoption of
           Top Hill Primary School in Manchester and donations to various police

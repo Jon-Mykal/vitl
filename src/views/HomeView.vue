@@ -47,9 +47,9 @@ backdrop-filter: blur(4.4px);
           <p class="lead">
             We're here to provide you with a wide range of hardware supplies for you to either get started or finish
             your next building project. We have products covering various sections of a project including but not
-            limited to the <strong>balcony, shower and windows</strong>. Some of our products use high quality aluminium
-            to give you
-            durability while keeping the price in check. Take a look at around!
+            limited to the <strong>balcony, showers, retractable mesh frames, windows and doors</strong>. Our extrusions are
+manufactured using high quality aluminium to give you durability while keeping the price in check. Take
+a look around!
           </p>
         </div>
       </div>

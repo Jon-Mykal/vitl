@@ -30,8 +30,8 @@
           </ul>
         </nav>
         <!-- .navbar -->
-        <RouterLink :to="{ name: 'shop' }" class="btn-book-a-table"
-          >Our Shop</RouterLink
+        <a href="https://virginsintltrading.fygaroshops.com/products/search/?category=10734&page=1" class="btn-book-a-table"
+          >Our Shop</a
         >
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>

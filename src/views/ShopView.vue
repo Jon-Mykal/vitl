@@ -9,7 +9,7 @@
 
     </div>
     <section class="d-flex justify-content-center pt-2">
-      <a class="btn-book-a-table fs-5" href="https://virginsintltrading.fygaroshops.com/products/">
+      <a class="btn-book-a-table fs-5" href="https://virginsintltrading.fygaroshops.com/products/search/?category=10734&page=1">
         Take me to the shop
       </a>
       <RouterLink class="return-home btn btn-link rounded text-decoration-none fs-5" :to="{ name: 'home' }">Return to home

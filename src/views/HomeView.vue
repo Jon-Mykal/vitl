@@ -232,6 +232,11 @@ backdrop-filter: blur(4.4px);
                 </a>
                 <h4>Balcony Connector 90%</h4>
                 <p class="price">J$2586.38</p>
+                <a
+                  class="btn-book-a-table px-4"
+                  href="https://virginsintltrading.fygaroshops.com/products/feb7994a-c5d1-46cc-be93-208ae74e7e08/"
+                  >Buy</a
+                >
               </div>
               <!-- Menu Item -->
 
@@ -249,6 +254,11 @@ backdrop-filter: blur(4.4px);
                 <h4>Balcony Tubing Satin</h4>
 
                 <p class="price">J$27060.00</p>
+                <a
+                  class="btn-book-a-table px-4"
+                  href="https://virginsintltrading.fygaroshops.com/products/8f4d1246-34ac-432d-96dd-2364cd623476/"
+                  >Buy</a
+                >
               </div>
               <!-- Menu Item -->
 
@@ -265,6 +275,11 @@ backdrop-filter: blur(4.4px);
                 </a>
                 <h4>Balcony Tubing Connector</h4>
                 <p class="price">J$1773.75</p>
+                <a
+                  class="btn-book-a-table px-4"
+                  href="https://virginsintltrading.fygaroshops.com/products/7553faa2-9ace-44bb-93f8-5e0b435f43ab/"
+                  >Buy</a
+                >
               </div>
               <!-- Menu Item -->
             </div>
@@ -288,6 +303,11 @@ backdrop-filter: blur(4.4px);
                 <h4>Magnam Tiste</h4>
                 <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
                 <p class="price">$5.95</p>
+                <a
+                  class="btn-book-a-table px-4"
+                  href="https://virginsintltrading.fygaroshops.com/products/3fa19472-76a7-49aa-9b36-dd843baf20d0/"
+                  >Buy</a
+                >
               </div>
               <!-- Menu Item -->
 
@@ -302,6 +322,11 @@ backdrop-filter: blur(4.4px);
                 <h4>Aut Luia</h4>
                 <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
                 <p class="price">$14.95</p>
+                <a
+                  class="btn-book-a-table px-4"
+                  href="https://virginsintltrading.fygaroshops.com/products/3fa19472-76a7-49aa-9b36-dd843baf20d0/"
+                  >Buy</a
+                >
               </div>
               <!-- Menu Item -->
 
@@ -316,6 +341,11 @@ backdrop-filter: blur(4.4px);
                 <h4>Est Eligendi</h4>
                 <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
                 <p class="price">$8.95</p>
+                <a
+                  class="btn-book-a-table px-4"
+                  href="https://virginsintltrading.fygaroshops.com/products/3fa19472-76a7-49aa-9b36-dd843baf20d0/"
+                  >Buy</a
+                >
               </div>
               <!-- Menu Item -->
             </div>

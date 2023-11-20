@@ -18,7 +18,9 @@
           <div>
             <h4>Reservations</h4>
             <p>
+              <strong>Phone: </strong>(876) 754-1318<br />
               <strong>Phone:</strong> (876) 906-1934<br />
+              <strong>Phone: </strong>(876) 906-0736<br />
               <strong>WhatsApp/Phone:</strong> (876) 335-9795<br />
               <strong>Email:</strong> virgins.intltrading18@gmail.com<br />
             </p>

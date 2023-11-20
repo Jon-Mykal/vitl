@@ -45,7 +45,9 @@
             <i class="icon bi bi-telephone flex-shrink-0"></i>
             <div>
               <h3>Call Us</h3>
+              <p><strong>Phone: </strong>(876) 754-1318</p>
               <p><strong>Phone: </strong>(876) 906-1934</p>
+              <p><strong>Phone: </strong>(876) 906-0736</p>
               <p><strong>WhatsApp/Phone: </strong>(876) 335-9795</p>
             </div>
           </div>

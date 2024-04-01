@@ -1,10 +1,12 @@
 // import "./assets/main.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
+
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap-icons/font/bootstrap-icons.css";
 import "./assets/main.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "aos";
 import 'https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js';
+
 import PureCounter from "@srexi/purecounterjs";
 
 new PureCounter();

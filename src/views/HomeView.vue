@@ -85,7 +85,7 @@ backdrop-filter: blur(4.4px);
     <section id="menu" class="menu">
       <div class="container aos-init aos-animate" data-aos="fade-up">
         <div class="section-header">
-          <p>Featured <span class="fw-bold">Categories</span></p>
+          <p>Featured <span class="fw-bold">Products</span></p>
         </div>
 
         <ul
@@ -118,7 +118,7 @@ backdrop-filter: blur(4.4px);
               <h4>Balcony</h4> </a
             ><!-- End tab nav item -->
           </li>
-          <li class="nav-item" role="presentation">
+          <li class="nav-item d-none" role="presentation">
             <a
               class="nav-link"
               data-bs-toggle="tab"
@@ -201,7 +201,7 @@ backdrop-filter: blur(4.4px);
                   />
                 </a>
                 <h4 class="text-capitalize">Fixed Louvre Frame - 21FT</h4>
-                <p class="price">J$3458.12</p>
+                <p class="price">J$3,458.12</p>
                 <a
                   class="btn-book-a-table px-4"
                   href="https://virginsintltrading.fygaroshops.com/products/326cb180-f8da-4970-9efc-ce79f90d1131/"
@@ -231,7 +231,7 @@ backdrop-filter: blur(4.4px);
                   />
                 </a>
                 <h4>Balcony Connector 90%</h4>
-                <p class="price">J$2586.38</p>
+                <p class="price">J$2,586.38</p>
                 <a
                   class="btn-book-a-table px-4"
                   href="https://virginsintltrading.fygaroshops.com/products/feb7994a-c5d1-46cc-be93-208ae74e7e08/"
@@ -253,7 +253,7 @@ backdrop-filter: blur(4.4px);
                 </a>
                 <h4>Balcony Tubing Satin</h4>
 
-                <p class="price">J$27060.00</p>
+                <p class="price">J$27,060.00</p>
                 <a
                   class="btn-book-a-table px-4"
                   href="https://virginsintltrading.fygaroshops.com/products/8f4d1246-34ac-432d-96dd-2364cd623476/"
@@ -274,7 +274,7 @@ backdrop-filter: blur(4.4px);
                   />
                 </a>
                 <h4>Balcony Tubing Connector</h4>
-                <p class="price">J$1773.75</p>
+                <p class="price">J$1,773.75</p>
                 <a
                   class="btn-book-a-table px-4"
                   href="https://virginsintltrading.fygaroshops.com/products/7553faa2-9ace-44bb-93f8-5e0b435f43ab/"
@@ -296,16 +296,15 @@ backdrop-filter: blur(4.4px);
                 <a href="assets/img/menu/menu-item-1.png" class="glightbox">
                   <img
                     class="img-fluid"
-                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/393286/d1dcd5fa-c790-4d29-993a-5f184e0d2a33.png"
                     alt=""
                   />
                 </a>
-                <h4>Magnam Tiste</h4>
-                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
-                <p class="price">$5.95</p>
+                <h4>Shower Mixer</h4>
+                <p class="price">$30,225.00</p>
                 <a
                   class="btn-book-a-table px-4"
-                  href="https://virginsintltrading.fygaroshops.com/products/3fa19472-76a7-49aa-9b36-dd843baf20d0/"
+                  href="https://virginsintltrading.fygaroshops.com/products/ab4cf01d-844e-40c0-8d95-d864b3ddbf4d/"
                   >Buy</a
                 >
               </div>

@@ -32,12 +32,12 @@
     </ul>
   </SfAccordionItem>
     </div>
-  <div class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px]">
+  <div class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px]" v-for="product in products" :key="product.id">
     <div class="relative">
       <SfLink href="#" class="block">
         <img
-          src="https://storage.googleapis.com/sfui_docs_artifacts_bucket_public/production/sneakers.png"
-          alt="Great product"
+          :src="product.imageSrc"
+          :alt="product.imageAlt"
           class="block object-cover h-auto rounded-md aspect-square"
           width="300"
           height="300"
@@ -54,7 +54,7 @@
       </SfButton>
     </div>
     <div class="p-4 border-t border-neutral-200">
-      <SfLink href="#" variant="secondary" class="no-underline"> Athletic mens walking sneakers </SfLink>
+      <SfLink href="#" variant="secondary" class="no-underline"> {{ product.name}} </SfLink>
       <div class="flex items-center pt-1">
         <SfRating size="xs" :value="5" :max="5" />
 
@@ -63,9 +63,9 @@
         </SfLink>
       </div>
       <p class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700">
-        Lightweight • Non slip • Flexible outsole • Easy to wear on and off
+        {{ product.description }}
       </p>
-      <span class="block pb-2 font-bold typography-text-lg">$2345,99</span>
+      <span class="block pb-2 font-bold typography-text-lg">{{ product.price}}</span>
       <SfButton size="sm" class="bg-black">
         <template #prefix>
           <SfIconShoppingCart size="sm" />
@@ -144,6 +144,120 @@ const categories = ref([
 ]);
 
 const open = ref(true);
+
+const products = [
+    {
+      id: 1,
+      name: 'Basic Tee',
+      href: '#',
+      imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+      imageAlt: "Front of men's Basic Tee in black.",
+      price: '$35',
+      color: 'Black',
+      description: 'Lightweight • Non slip • Flexible outsole • Easy to wear on and off'
+    },
+    {
+    "id": 2,
+    "name": "Classic V-Neck",
+    "href": "#",
+    "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg",
+    "imageAlt": "Front of men's Classic V-Neck in white.",
+    "price": "$40",
+    "color": "White",
+    "description": "Breathable fabric • Ribbed collar • Comfort fit"
+  },
+  {
+    "id": 3,
+    "name": "Summer Shorts",
+    "href": "#",
+    "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg",
+    "imageAlt": "Front of men's Summer Shorts in blue.",
+    "price": "$45",
+    "color": "Blue",
+    "description": "Quick-dry material • Adjustable drawstring • Mesh lining"
+  },
+  {
+    "id": 4,
+    "name": "Polo Shirt",
+    "href": "#",
+    "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg",
+    "imageAlt": "Front of men's Polo Shirt in green.",
+    "price": "$50",
+    "color": "Green",
+    "description": "Soft cotton pique • Classic collar • Two-button placket"
+  },
+  {
+    "id": 5,
+    "name": "Denim Jacket",
+    "href": "#",
+    "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-05.jpg",
+    "imageAlt": "Front of men's Denim Jacket in denim.",
+    "price": "$90",
+    "color": "Denim",
+    "description": "Rugged denim • Point collar • Buttoned cuffs"
+  },
+  {
+    "id": 6,
+    "name": "Leather Belt",
+    "href": "#",
+    "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-06.jpg",
+    "imageAlt": "Front of men's Leather Belt in brown.",
+    "price": "$35",
+    "color": "Brown",
+    "description": "Genuine leather • Metal buckle • Adjustable fit"
+  },
+  {
+    "id": 7,
+    "name": "Running Sneakers",
+    "href": "#",
+    "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-07.jpg",
+    "imageAlt": "Front of men's Running Sneakers in red.",
+    "price": "$120",
+    "color": "Red",
+    "description": "High traction sole • Breathable mesh • Durable design"
+  },
+  {
+    "id": 8,
+    "name": "Beanie Hat",
+    "href": "#",
+    "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-08.jpg",
+    "imageAlt": "Front of men's Beanie Hat in gray.",
+    "price": "$25",
+    "color": "Gray",
+    "description": "Warm knit • Fold-over brim • One size fits all"
+  },
+  {
+    "id": 9,
+    "name": "Sunglasses",
+    "href": "#",
+    "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-09.jpg",
+    "imageAlt": "Front of men's Sunglasses in black.",
+    "price": "$85",
+    "color": "Black",
+    "description": "UV protection • Scratch-resistant lenses • Lightweight frame"
+  },
+  {
+    "id": 10,
+    "name": "Wristwatch",
+    "href": "#",
+    "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-10.jpg",
+    "imageAlt": "Front of men's Wristwatch in silver.",
+    "price": "$250",
+    "color": "Silver",
+    "description": "Quartz movement • Stainless steel • Water-resistant"
+  },
+  {
+    "id": 11,
+    "name": "Casual Backpack",
+    "href": "#",
+    "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-11.jpg",
+    "imageAlt": "Front of Casual Backpack in olive.",
+    "price": "$70",
+    "color": "Olive",
+    "description": "Spacious main compartment • Padded straps • Durable material"
+  }
+    // More products...
+  ]
 </script>
 
 <style lang="css" scoped>

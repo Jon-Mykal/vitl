@@ -187,7 +187,7 @@
 import PageTitle from "../components/PageTitle.vue";
 import ProductList from "../components/ProductList.vue";
 
-import { ref, onMounted, onBeforeMount } from 'vue';
+import { ref, onMounted, onBeforeMount, watchEffect } from 'vue';
 import {
   SfAccordionItem,
   SfCounter,
@@ -203,21 +203,22 @@ import axios from "axios";
 
 let products = ref([]);
 const categories = ref([]);
-onBeforeMount(async () => {
-    let res = await axios.get("https://localhost:7004/api/productv2");
-    products.value = res.data["products"];
-    categories.value = res.data["categories"];
-})
+let itemsCount = ref(0)
 
-const { totalPages, pages, selectedPage, startPage, endPage, next, prev, setPage, maxVisiblePages } = usePagination({
-  totalItems: 150,
-  currentPage: 2,
-  pageSize: 10,
-  maxPages: 1,
+watchEffect(async () => {
+    let res = await axios.get("https://localhost:7004/api/productv2");
+    categories.value = res.data["categories"];
+    products.value = res.data["products"];
 });
 
+const { totalPages, pages, selectedPage, startPage, endPage, next, prev, setPage, maxVisiblePages } = usePagination({
+  totalItems: 100,
+  currentPage: 1,
+  pageSize: 10,
+  maxPages: 100 / 10,
+});
 
-
+console.log(products.value.length); 
 
 const open = ref(true);
 

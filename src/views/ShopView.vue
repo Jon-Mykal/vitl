@@ -34,7 +34,53 @@
     </ul>
   </SfAccordionItem>
 </section>
-<ProductList :products="displayedProducts" />
+<section class="col-9 mx-5 -mt-14">
+  <section class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 -mt-14">
+    <ProductItem v-for="product in displayedProducts" :key="product.id" :product="product" />
+  <!-- <div class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px]" v-for="product in products" :key="product.id">
+    <div class="relative">
+      <SfLink href="#" class="block">
+        <img
+          :src="product.imageSrc"
+          :alt="product.imageAlt"
+          class="block object-cover h-auto rounded-md aspect-square"
+          width="300"
+          height="300"
+        />
+      </SfLink>
+      <SfButton
+        variant="tertiary"
+        size="sm"
+        square
+        class="absolute bottom-0 right-0 mr-2 mb-2 bg-white ring-1 ring-inset ring-neutral-200 !rounded-full"
+        aria-label="Add to wishlist"
+      >
+        <SfIconFavorite size="sm" />
+      </SfButton>
+    </div>
+    <div class="p-4 border-t border-neutral-200">
+      <SfLink href="#" variant="secondary" class="no-underline"> {{ product.name}} </SfLink>
+      <div class="flex items-center pt-1">
+        <SfRating size="xs" :value="5" :max="5" />
+
+        <SfLink href="#" variant="secondary" class="pl-1 no-underline">
+          <SfCounter size="xs">123</SfCounter>
+        </SfLink>
+      </div>
+      <p class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700">
+        {{ product.description }}
+      </p>
+      <span class="block pb-2 font-bold typography-text-lg">{{ product.price}}</span>
+      <SfButton size="sm" class="bg-black">
+        <template #prefix>
+          <SfIconShoppingCart size="sm" />
+        </template>
+        Add to cart
+      </SfButton>
+    </div>
+  </div> -->
+  </section>
+</section>
 
 </section>
   <nav class="flex justify-between items-end border-t border-neutral-200" role="navigation" aria-label="pagination">
@@ -186,8 +232,11 @@
 <script setup>
 import PageTitle from "../components/PageTitle.vue";
 import ProductList from "../components/ProductList.vue";
+import ProductItem from "../components/ProductItem.vue";
 
-import { ref, onMounted, onBeforeMount, watchEffect, computed } from 'vue';
+import { ref, onMounted, onBeforeMount, watchEffect, computed, nextTick } from 'vue';
+import { computedAsync } from '@vueuse/core'
+import { getCurrentInstance } from 'vue'
 import {
   SfAccordionItem,
   SfCounter,
@@ -205,8 +254,42 @@ let products = ref([]);
 const categories = ref([]);
 const subcategories = ref([]);
 let itemsCount = ref(0)
+onBeforeMount(async () => {
+    let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
+    categories.value = res.data["categories"];
+    categories.value = categories.value.filter(c => c["name"] === "Aluminium");
+    products.value = res.data["products"];
+    products.value = products.value.filter(p => p["show_in_website"]);
+    localStorage.setItem("products", JSON.stringify(products.value));
+    localStorage.setItem("categories", JSON.stringify(categories.value));
+    localStorage.setItem("itemCount", res.data["productsCount"]);
+    let vueStuff = getCurrentInstance();
+    console.log(vueStuff);
+    await nextTick();
+});
 
-watchEffect(async () => {
+onMounted(() => {
+ setTimeout(() => {
+  if (!localStorage.getItem("reloaded")) {
+    localStorage.setItem("reloaded", true);
+    window.location.reload();
+  }
+
+ }, 100);
+});
+
+const { totalPages, pages, selectedPage, startPage, endPage, next, prev, setPage, maxVisiblePages } = usePagination({
+  totalItems:  sessionStorage.getItem("itemCount"),
+  currentPage: 1,
+  pageSize: 12,
+  maxPages: sessionStorage.getItem("itemCount") / 12,
+});
+
+const displayedProducts = computedAsync(async () => {
+  const startIndex = (selectedPage.value * 12) - 12;
+  const endIndex = startIndex + 12;
+  let capturedProducts = [];
+  if (!sessionStorage.getItem("products")) {
     let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
     categories.value = res.data["categories"];
     categories.value = categories.value.filter(c => c["name"] === "Aluminium");
@@ -215,22 +298,15 @@ watchEffect(async () => {
     sessionStorage.setItem("products", JSON.stringify(products.value));
     sessionStorage.setItem("categories", JSON.stringify(categories.value));
     sessionStorage.setItem("itemCount", res.data["productsCount"]);
-});
+    capturedProducts = JSON.parse(sessionStorage.getItem("products"))
+  }
+  else {
+    capturedProducts = JSON.parse(sessionStorage.getItem("products"))
+  }
 
-console.log(sessionStorage.getItem("itemCount"));
-const { totalPages, pages, selectedPage, startPage, endPage, next, prev, setPage, maxVisiblePages } = usePagination({
-  totalItems:  sessionStorage.getItem("itemCount"),
-  currentPage: 1,
-  pageSize: 12,
-  maxPages: sessionStorage.getItem("itemCount") / 12,
-});
-
-const displayedProducts = computed(() => {
-  const startIndex = (selectedPage.value * 12) - 12;
-  const endIndex = startIndex + 12;
-  return products.value.sort((a, b) => {
-  const titleA = a.name.toUpperCase(); // ignore upper and lowercase
-  const titleB = b.name.toUpperCase(); // ignore upper and lowercase
+  return capturedProducts.sort((a, b) => {
+  const titleA = a['name'].toUpperCase(); // ignore upper and lowercase
+  const titleB = b['name'].toUpperCase(); // ignore upper and lowercase
   if (titleA < titleB) {
     return -1;
   }
@@ -241,9 +317,7 @@ const displayedProducts = computed(() => {
   // names must be equal
   return 0;
 }).slice(startIndex, endIndex);
-});
-
-console.log(maxVisiblePages); 
+}, JSON.parse(sessionStorage.getItem("products")));
 
 const open = ref(true);
 

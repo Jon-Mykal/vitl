@@ -34,7 +34,7 @@
     </ul>
   </SfAccordionItem>
 </section>
-<ProductList :products="products" />
+<ProductList :products="displayedProducts" />
 
 </section>
   <nav class="flex justify-between items-end border-t border-neutral-200" role="navigation" aria-label="pagination">
@@ -77,7 +77,7 @@
         </div>
       </li>
       <li v-if="maxVisiblePages === 1 && selectedPage === totalPages">
-        <div class="flex pt-1 bor`der-t-4 border-transparent">
+        <div class="flex pt-1 border-t-4 border-transparent">
           <button
             type="button"
             class="min-w-[38px] px-3 sm:px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
@@ -187,7 +187,7 @@
 import PageTitle from "../components/PageTitle.vue";
 import ProductList from "../components/ProductList.vue";
 
-import { ref, onMounted, onBeforeMount, watchEffect } from 'vue';
+import { ref, onMounted, onBeforeMount, watchEffect, computed } from 'vue';
 import {
   SfAccordionItem,
   SfCounter,
@@ -203,22 +203,47 @@ import axios from "axios";
 
 let products = ref([]);
 const categories = ref([]);
+const subcategories = ref([]);
 let itemsCount = ref(0)
 
 watchEffect(async () => {
-    let res = await axios.get("https://localhost:7004/api/productv2");
+    let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
     categories.value = res.data["categories"];
+    categories.value = categories.value.filter(c => c["name"] === "Aluminium");
     products.value = res.data["products"];
+    products.value = products.value.filter(p => p["show_in_website"]);
+    sessionStorage.setItem("products", JSON.stringify(products.value));
+    sessionStorage.setItem("categories", JSON.stringify(categories.value));
+    sessionStorage.setItem("itemCount", res.data["productsCount"]);
 });
 
+console.log(sessionStorage.getItem("itemCount"));
 const { totalPages, pages, selectedPage, startPage, endPage, next, prev, setPage, maxVisiblePages } = usePagination({
-  totalItems: 100,
+  totalItems:  sessionStorage.getItem("itemCount"),
   currentPage: 1,
-  pageSize: 10,
-  maxPages: 100 / 10,
+  pageSize: 12,
+  maxPages: sessionStorage.getItem("itemCount") / 12,
 });
 
-console.log(products.value.length); 
+const displayedProducts = computed(() => {
+  const startIndex = (selectedPage.value * 12) - 12;
+  const endIndex = startIndex + 12;
+  return products.value.sort((a, b) => {
+  const titleA = a.name.toUpperCase(); // ignore upper and lowercase
+  const titleB = b.name.toUpperCase(); // ignore upper and lowercase
+  if (titleA < titleB) {
+    return -1;
+  }
+  if (titleA > titleB) {
+    return 1;
+  }
+
+  // names must be equal
+  return 0;
+}).slice(startIndex, endIndex);
+});
+
+console.log(maxVisiblePages); 
 
 const open = ref(true);
 

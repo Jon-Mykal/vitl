@@ -265,17 +265,18 @@ onBeforeMount(async () => {
     localStorage.setItem("itemCount", res.data["productsCount"]);
     let vueStuff = getCurrentInstance();
     console.log(vueStuff);
-    await nextTick();
+    
 });
 
-onMounted(() => {
- setTimeout(() => {
-  if (!localStorage.getItem("reloaded")) {
-    localStorage.setItem("reloaded", true);
-    window.location.reload();
-  }
+onMounted(async () => {
+  await nextTick();
+//  setTimeout(() => {
+//   if (!localStorage.getItem("reloaded")) {
+//     localStorage.setItem("reloaded", true);
+//     window.location.reload();
+//   }
 
- }, 100);
+//  }, 100);
 });
 
 const { totalPages, pages, selectedPage, startPage, endPage, next, prev, setPage, maxVisiblePages } = usePagination({

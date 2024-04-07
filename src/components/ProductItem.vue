@@ -3,7 +3,7 @@
     <div class="relative">
       <SfLink href="#" class="block">
         <img
-          :src="product.imageSrc"
+          :src="prodImage"
           :alt="product.imageAlt"
           class="block object-cover h-auto rounded-md aspect-square"
           width="300"
@@ -57,6 +57,7 @@ import {
  const props = defineProps({
     product: Object
  })
+ const prodImage = props.product.images.length ? props.product.images[0]['image'] : '';
 </script>
 
 <style lang="scss" scoped>

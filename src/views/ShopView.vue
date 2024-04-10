@@ -12,7 +12,7 @@
       </div>
     </template>
     <ul class="mt-2 mb-6">
-      <li v-for="(category, index) in categories" :key="category.id">
+      <li v-for="(category, index) in categories" :key="category.id" v-on:click="displayCategoryProducts(category.id, category.name)">
         <SfListItem
           size="sm"
           tag="a"
@@ -22,10 +22,11 @@
             { 'bg-primary-100 hover:bg-primary-100 active:bg-primary-100 font-medium active-category': category.id === selectedCategory.id},
           ]"
         >
+        
           <template #suffix>
             <SfIconCheck v-if="category.id === selectedCategory.id" size="sm" class="text-primary-700" />
           </template>
-          <span class="flex items-center" v-on:click="displayCategoryProducts(category.id, category.name)">
+          <span class="flex items-center">
             {{ category.name }}
        
           </span>
@@ -258,9 +259,10 @@ const categories = ref([]);
 const subcategories = ref([]);
 let categoryTrack = ref({});
 let selectedCategory = ref({});
-selectedCategory.value = { id: 10734,  name: 'Aluminium'}
+// let selectedCategory = ref({});
+
 let itemsCount = ref(0);
-const triggerProp = ref(10);
+let triggerProp =  ref(localStorage.getItem("triggerProp") || 0);
 const componentInstance = getCurrentInstance();
 const displayCategoryProducts = async (id = 0, name = "") => {
   products.value = productsSource.value;
@@ -274,33 +276,56 @@ const displayCategoryProducts = async (id = 0, name = "") => {
   itemsCount.value = products.value.length;
   // currentPage.value = triggerProp.value++;
   console.log("itemsCount", itemsCount.value);
-  selectedCategory.value = JSON.parse(localStorage.getItem("selectedCategory"));
-  window.location.reload();
+  // if (triggerProp.value > 1) {
+    window.location.reload();
+  // }
+  
 };
 
+
+watch(selectedCategory, () => {
+  console.log("Changed");
+})
 onBeforeMount(async () => {
 // let aluminiumCat = cats.filter(c => c.name == "Aluminium")[0];
+// selectedCategory.value = { id: 10734, name: 'Aluminium'};
+    // tri
 
+    if (triggerProp.value === 0) {
+      triggerProp.value++;
+      localStorage.setItem('triggerProp', triggerProp.value)
+      displayCategoryProducts(10734, 'Aluminium');  
+    }
 
-    
+    // (triggerProp.value === 1) {
+    //   console.log(selectedCategory.value);
+    // }
+ 
 });
 
 
 onMounted(async () => {
   let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
+
     categories.value = res.data["categories"];
     products.value = res.data["products"];
     products.value = products.value.filter(p => p["show_in_website"]);
     productsSource.value = products.value;
-let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
+    
+// let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
     localStorage.setItem("products", JSON.stringify(products.value));
     localStorage.setItem("productsSource", JSON.stringify(products.value));
     localStorage.setItem("categories", JSON.stringify(categories.value));
     
     // localStorage.setItem("itemCount", res.data["productsCount"]);
-  
+    selectedCategory.value = JSON.parse(localStorage.getItem("selectedCategory"));
     await nextTick();
-    // displayCategoryProducts(aluminiumCat.id, aluminiumCat.name);
+console.log(selectedCategory.value);
+    // if (selectedCategory.value.hasOwnProperty("id")) {
+    //   console.log(selectedCategory.value);
+      
+    // }
+    
   
 });
 
@@ -324,6 +349,7 @@ const displayedProducts = computedAsync(async () => {
   const endIndex = startIndex + 12;
   let capturedProducts = [];
   if (!localStorage.getItem("products")) {
+    console.log("In this block")
     let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
     categories.value = res.data["categories"];
     products.value = res.data["products"];
@@ -335,6 +361,7 @@ const displayedProducts = computedAsync(async () => {
   }
   else {
     capturedProducts = JSON.parse(localStorage.getItem("products"));
+    console.log(capturedProducts);
   }
   
   return capturedProducts.sort((a, b) => {

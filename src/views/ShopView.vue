@@ -19,11 +19,11 @@
           :href="category.link"
           :class="[
             'first-of-type:mt-2 rounded-md active:bg-primary-100',
-            { 'bg-primary-100 hover:bg-primary-100 active:bg-primary-100 font-medium': index === 0 },
+            { 'bg-primary-100 hover:bg-primary-100 active:bg-primary-100 font-medium active-category': category.id === selectedCategory.id},
           ]"
         >
           <template #suffix>
-            <SfIconCheck v-if="index === 0" size="sm" class="text-primary-700" />
+            <SfIconCheck v-if="category.id === selectedCategory.id" size="sm" class="text-primary-700" />
           </template>
           <span class="flex items-center" v-on:click="displayCategoryProducts(category.id, category.name)">
             {{ category.name }}
@@ -256,6 +256,8 @@ let displayedProductsSource = ref([]);
 let productsSource = ref([]);
 const categories = ref([]);
 const subcategories = ref([]);
+let categoryTrack = ref({});
+let selectedCategory = ref({});
 let itemsCount = ref(0);
 const triggerProp = ref(10);
 const componentInstance = getCurrentInstance();
@@ -266,43 +268,42 @@ const displayCategoryProducts = async (id = 0, name = "") => {
   });
   localStorage.setItem("products", JSON.stringify(products.value));
   localStorage.setItem("itemCount", products.value.length);
+  localStorage.setItem("selectedCategory", JSON.stringify({ id: id, name: name }));
   displayedProductsSource.value = products.value;
   itemsCount.value = products.value.length;
   // currentPage.value = triggerProp.value++;
   console.log("itemsCount", itemsCount.value);
+  selectedCategory.value = JSON.parse(localStorage.getItem("selectedCategory"));
+  if(categoryTrack) {
+    if (categoryTrack.id !== id) {
+      // window.location.reload();
+    }
+  }
 };
 
 onBeforeMount(async () => {
-  let cats = JSON.parse(localStorage.getItem("categories"));
 // let aluminiumCat = cats.filter(c => c.name == "Aluminium")[0];
 
-    let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
-    categories.value = res.data["categories"];
-    products.value = res.data["products"];
-    products.value = products.value.filter(p => p["show_in_website"]);
-    productsSource.value = products.value;
-    localStorage.setItem("products", JSON.stringify(products.value));
-    localStorage.setItem("productsSource", JSON.stringify(products.value));
-    localStorage.setItem("categories", JSON.stringify(categories.value));
-    localStorage.setItem("itemCount", res.data["productsCount"]);
-  
-    await nextTick();
-    // displayCategoryProducts(aluminiumCat.id, aluminiumCat.name);
+
+    
 });
 
 
 onMounted(async () => {
-//   setTimeout(() => {
-//   if (!localStorage.getItem("reloaded")) {
-//     localStorage.setItem("reloaded", true);
-//     window.location.reload();
-//   }
+  let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
+    categories.value = res.data["categories"];
+    products.value = res.data["products"];
+    products.value = products.value.filter(p => p["show_in_website"]);
+    productsSource.value = products.value;
+let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
+    localStorage.setItem("products", JSON.stringify(products.value));
+    localStorage.setItem("productsSource", JSON.stringify(products.value));
+    localStorage.setItem("categories", JSON.stringify(categories.value));
+    
+    // localStorage.setItem("itemCount", res.data["productsCount"]);
   
-//  }, 100);
-
-
-triggerProp.value++;
-  await nextTick();
+    await nextTick();
+    displayCategoryProducts(aluminiumCat.id, aluminiumCat.name);
   
 });
 
@@ -317,7 +318,7 @@ console.log("Page Count");
 const { totalPages, pages, selectedPage, startPage, endPage, next, prev, setPage, maxVisiblePages } = usePagination({
   totalItems:  localStorage.getItem("itemCount"),
   currentPage: 1,
-  pageSize: 12,
+  pageSize: 12
 });
 
 
@@ -362,5 +363,9 @@ const open = ref(true);
 .return-home {
   color: #ce1212;
   ;
+}
+.active-category {
+  background-color: #ce1212;
+  color: white;
 }
 </style>

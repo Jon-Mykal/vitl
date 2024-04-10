@@ -12,7 +12,7 @@
       </div>
     </template>
     <ul class="mt-2 mb-6">
-      <li v-for="(category, index) in categories" :key="category.key">
+      <li v-for="(category, index) in categories" :key="category.id">
         <SfListItem
           size="sm"
           tag="a"
@@ -25,7 +25,7 @@
           <template #suffix>
             <SfIconCheck v-if="index === 0" size="sm" class="text-primary-700" />
           </template>
-          <span class="flex items-center">
+          <span class="flex items-center" v-on:click="displayCategoryProducts(category.id, category.name)">
             {{ category.name }}
        
           </span>
@@ -87,7 +87,7 @@
     <SfButton
       size="lg"
       aria-label="Go to previous page"
-      :disabled="selectedPage <= 1"
+      :disabled="currentPage <= 1"
       variant="tertiary"
       class="gap-3 !px-3 sm:px-6"
       @click="prev"
@@ -98,96 +98,133 @@
       <span class="hidden sm:inline-flex"> Previous </span>
     </SfButton>
     <ul class="flex justify-center">
-      <li v-if="!pages.includes(1)">
+      <li v-if="pageCount != 1">
         <div
           :class="[
             'flex pt-1 border-t-4 border-transparent',
-            { 'font-medium border-t-4 !border-primary-500': selectedPage === 1 },
+            { 'font-medium border-t-4 !border-primary-500': currentPage === 1 },
           ]"
         >
           <button
             type="button"
             class="min-w-[38px] px-3 sm:px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
-            :aria-current="selectedPage === 1"
+            :aria-current="currentPage === 1"
             @click="setPage(1)"
           >
             1
           </button>
         </div>
       </li>
-      <li v-if="startPage > 2">
+      <li v-if="!isFirstPage && !isLastPage">
         <div class="flex pt-1 border-t-4 border-transparent">
           <button type="button" disabled aria-hidden="true" class="px-4 py-3 md:w-12 rounded-md text-neutral-500">
             ...
           </button>
         </div>
       </li>
-      <li v-if="maxVisiblePages === 1 && selectedPage === totalPages">
+      <!-- <li v-if="maxVisiblePages === 1 && currentPage === pageCount">
         <div class="flex pt-1 border-t-4 border-transparent">
           <button
             type="button"
             class="min-w-[38px] px-3 sm:px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
-            :aria-current="endPage - 1 === selectedPage"
-            @click="setPage(endPage - 1)"
+            :aria-current="isLastPage - 1 === currentPage"
+            @click="setPage(isLastPage - 1)"
           >
-            {{ endPage - 1 }}
+            {{ isLastPage - 1 }}
           </button>
         </div>
-      </li>
-      <li v-for="page in pages" :key="`page-${page}`">
+      </li> -->
+
+    <div class="gap-x-4 gap-y-2 grid-cols-2 inline-grid items-center">
+      <div opacity="50">
+        total:
+      </div>
+      <!-- <div>{{ database.length }}</div> -->
+      <div opacity="50">
+        pageCount:
+      </div>
+      <div>{{ pageCount }}</div>
+      <div opacity="50">
+        currentPageSize:
+      </div>
+      <div>{{ currentPageSize }}</div>
+      <div opacity="50">
+        currentPage:
+      </div>
+      <div>{{ currentPage }}</div>
+      <div opacity="50">
+        isFirstPage:
+      </div>
+      <div>{{ isFirstPage }}</div>
+      <div opacity="50">
+        isLastPage:
+      </div>
+      <div>{{ isLastPage }}</div>
+    </div>
+    <div>
+      <button :disabled="isFirstPage" @click="prev">
+        prev
+      </button>
+      <button :disabled="isLastPage" @click="next">
+        next
+      </button>
+    </div>
+
+      <li v-for="page in pageCount" :key="`page-${page}`">
         <div
           :class="[
             'flex pt-1 border-t-4 border-transparent',
-            { 'font-medium border-t-4 !border-primary-700': selectedPage === page },
+            { 'font-medium border-t-4 !border-primary-700': currentPage === page },
           ]"
         >
+        {{ page }}
           <button
             type="button"
             :class="[
               'min-w-[38px] px-3 sm:px-4 py-3 md:w-12 text-neutral-500 rounded-md hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900',
-              { '!text-neutral-900 hover:!text-primary-800 active:!text-primary-900': selectedPage === page },
+              { '!text-neutral-900 hover:!text-primary-800 active:!text-primary-900': currentPage === page },
             ]"
-            :aria-label="`Page ${page} of ${totalPages}`"
-            :aria-current="selectedPage === page"
+            :aria-label="`Page ${page} of ${currentPage}`"
+            :aria-current="currentPage === page"
             @click="setPage(page)"
           >
             {{ page }}
           </button>
         </div>
       </li>
-      <li v-if="maxVisiblePages === 1 && selectedPage === 1">
+      <li v-if="maxVisiblePages === 1 && currentPage === 1">
         <div class="flex pt-1 border-t-4 border-transparent">
           <button
             type="button"
             class="min-w-[38px] px-3 sm:px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
-            :aria-label="`Page 2 of ${totalPages}`"
+            :aria-label="`Page 2 of ${currentPage}`"
             @click="setPage(2)"
           >
             2
           </button>
         </div>
       </li>
-      <li v-if="endPage < totalPages - 1">
+      <li v-if="isLastPage < pageCount - 1">
         <div class="flex pt-1 border-t-4 border-transparent">
           <button type="button" disabled aria-hidden="true" class="px-4 py-3 md:w-12 rounded-md text-neutral-500">
             ...
           </button>
         </div>
       </li>
-      <li v-if="!pages.includes(totalPages)">
+      <li v-if="pageCount != currentPage">
         <div
           :class="[
             'flex pt-1 border-t-4 border-transparent',
-            { 'font-medium border-t-4 !border-primary-500': selectedPage === totalPages },
+            { 'font-medium border-t-4 !border-primary-500': currentPage === currentPage },
           ]"
         >
           <button
             type="button"
             class="min-w-[38px] px-3 sm:px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
-            :aria-current="totalPages === selectedPage"
-            @click="setPage(totalPages)"
+            :aria-current="currentPage === currentPage"
+            @click="setPage(currentPage)"
           >
-            {{ totalPages }}
+            {{ currentPage }}
           </button>
         </div>
       </li>
@@ -195,7 +232,7 @@
     <SfButton
       size="lg"
       aria-label="Go to next page"
-      :disabled="selectedPage >= totalPages"
+      :disabled="currentPage >= currentPage"
       variant="tertiary"
       class="gap-3 !px-3 sm:px-6"
       @click="next"
@@ -234,9 +271,10 @@ import PageTitle from "../components/PageTitle.vue";
 import ProductList from "../components/ProductList.vue";
 import ProductItem from "../components/ProductItem.vue";
 
-import { ref, onMounted, onBeforeMount, watchEffect, computed, nextTick } from 'vue';
+import { ref, onMounted, onBeforeMount, watchEffect, computed, nextTick, watch } from 'vue';
 import { computedAsync } from '@vueuse/core'
 import { getCurrentInstance } from 'vue'
+import { useOffsetPagination } from '@vueuse/core'
 import {
   SfAccordionItem,
   SfCounter,
@@ -251,23 +289,44 @@ import {
 import axios from "axios";
 
 let products = ref([]);
+let displayedProductsSource = ref([]);
+let productsSource = ref([]);
 const categories = ref([]);
 const subcategories = ref([]);
-let itemsCount = ref(0)
+let itemsCount = ref(0);
+const triggerProp = ref(10);
+const componentInstance = getCurrentInstance();
+const displayCategoryProducts = async (id = 0, name = "") => {
+  products.value = productsSource.value;
+  products.value = products.value.filter(p => { 
+    return p.category.filter(c => c.id === id).length > 0;
+  });
+  localStorage.setItem("products", JSON.stringify(products.value));
+  localStorage.setItem("itemCount", products.value.length);
+  displayedProductsSource.value = products.value;
+  itemsCount.value = products.value.length;
+  // currentPage.value = triggerProp.value++;
+  console.log("itemsCount", itemsCount.value);
+};
+
 onBeforeMount(async () => {
+  let cats = JSON.parse(localStorage.getItem("categories"));
+let aluminiumCat = cats.filter(c => c.name == "Aluminium")[0];
+
     let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
     categories.value = res.data["categories"];
-    categories.value = categories.value.filter(c => c["name"] === "Aluminium");
     products.value = res.data["products"];
     products.value = products.value.filter(p => p["show_in_website"]);
+    productsSource.value = products.value;
     localStorage.setItem("products", JSON.stringify(products.value));
+    localStorage.setItem("productsSource", JSON.stringify(products.value));
     localStorage.setItem("categories", JSON.stringify(categories.value));
     localStorage.setItem("itemCount", res.data["productsCount"]);
-    let vueStuff = getCurrentInstance();
-    console.log(vueStuff);
+  
     await nextTick();
-    
+    displayCategoryProducts(aluminiumCat.id, aluminiumCat.name);
 });
+
 
 onMounted(async () => {
 //   setTimeout(() => {
@@ -277,35 +336,56 @@ onMounted(async () => {
 //   }
   
 //  }, 100);
+
+
+triggerProp.value++;
   await nextTick();
+  
 });
 
-const { totalPages, pages, selectedPage, startPage, endPage, next, prev, setPage, maxVisiblePages } = usePagination({
-  totalItems:  sessionStorage.getItem("itemCount"),
-  currentPage: 1,
+const fetchData = () => {
+
+};
+
+const pageCountChange = () => {
+console.log("Page Count");
+};
+
+const {  currentPage,
+  currentPageSize,
+  pageCount,
+  isFirstPage,
+  isLastPage,
+  prev,
+  next } = useOffsetPagination({
+    total: itemsCount.value,
+  page: 1,
   pageSize: 12,
-  maxPages: sessionStorage.getItem("itemCount") / 12,
+  onPageChange: fetchData,
+  onPageSizeChange: fetchData,
+  onPageCountChange: pageCountChange
+  // maxPages: 60 / 12,
 });
+
 
 const displayedProducts = computedAsync(async () => {
-  const startIndex = (selectedPage.value * 12) - 12;
+  const startIndex = (currentPage.value * 12) - 12;
   const endIndex = startIndex + 12;
   let capturedProducts = [];
-  if (!sessionStorage.getItem("products")) {
+  if (!localStorage.getItem("products")) {
     let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
     categories.value = res.data["categories"];
-    categories.value = categories.value.filter(c => c["name"] === "Aluminium");
     products.value = res.data["products"];
     products.value = products.value.filter(p => p["show_in_website"]);
-    sessionStorage.setItem("products", JSON.stringify(products.value));
-    sessionStorage.setItem("categories", JSON.stringify(categories.value));
-    sessionStorage.setItem("itemCount", res.data["productsCount"]);
-    capturedProducts = JSON.parse(sessionStorage.getItem("products"))
+    localStorage.setItem("products", JSON.stringify(products.value));
+    localStorage.setItem("categories", JSON.stringify(categories.value));
+    localStorage.setItem("itemCount", res.data["productsCount"]);
+    capturedProducts = JSON.parse(localStorage.getItem("products"));
   }
   else {
-    capturedProducts = JSON.parse(sessionStorage.getItem("products"))
+    capturedProducts = JSON.parse(localStorage.getItem("products"));
   }
-
+  
   return capturedProducts.sort((a, b) => {
   const titleA = a['name'].toUpperCase(); // ignore upper and lowercase
   const titleB = b['name'].toUpperCase(); // ignore upper and lowercase
@@ -319,123 +399,10 @@ const displayedProducts = computedAsync(async () => {
   // names must be equal
   return 0;
 }).slice(startIndex, endIndex);
-}, JSON.parse(sessionStorage.getItem("products")));
+}, JSON.parse(localStorage.getItem("products")));
 
 const open = ref(true);
 
-// const products = [
-//     {
-//       id: 1,
-//       name: 'Basic Tee',
-//       href: '#',
-//       imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-//       imageAlt: "Front of men's Basic Tee in black.",
-//       price: '$35',
-//       color: 'Black',
-//       description: 'Lightweight • Non slip • Flexible outsole • Easy to wear on and off'
-//     },
-//     {
-//     "id": 2,
-//     "name": "Classic V-Neck",
-//     "href": "#",
-//     "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg",
-//     "imageAlt": "Front of men's Classic V-Neck in white.",
-//     "price": "$40",
-//     "color": "White",
-//     "description": "Breathable fabric • Ribbed collar • Comfort fit"
-//   },
-//   {
-//     "id": 3,
-//     "name": "Summer Shorts",
-//     "href": "#",
-//     "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg",
-//     "imageAlt": "Front of men's Summer Shorts in blue.",
-//     "price": "$45",
-//     "color": "Blue",
-//     "description": "Quick-dry material • Adjustable drawstring • Mesh lining"
-//   },
-//   {
-//     "id": 4,
-//     "name": "Polo Shirt",
-//     "href": "#",
-//     "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg",
-//     "imageAlt": "Front of men's Polo Shirt in green.",
-//     "price": "$50",
-//     "color": "Green",
-//     "description": "Soft cotton pique • Classic collar • Two-button placket"
-//   },
-//   {
-//     "id": 5,
-//     "name": "Denim Jacket",
-//     "href": "#",
-//     "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-05.jpg",
-//     "imageAlt": "Front of men's Denim Jacket in denim.",
-//     "price": "$90",
-//     "color": "Denim",
-//     "description": "Rugged denim • Point collar • Buttoned cuffs"
-//   },
-//   {
-//     "id": 6,
-//     "name": "Leather Belt",
-//     "href": "#",
-//     "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-06.jpg",
-//     "imageAlt": "Front of men's Leather Belt in brown.",
-//     "price": "$35",
-//     "color": "Brown",
-//     "description": "Genuine leather • Metal buckle • Adjustable fit"
-//   },
-//   {
-//     "id": 7,
-//     "name": "Running Sneakers",
-//     "href": "#",
-//     "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-07.jpg",
-//     "imageAlt": "Front of men's Running Sneakers in red.",
-//     "price": "$120",
-//     "color": "Red",
-//     "description": "High traction sole • Breathable mesh • Durable design"
-//   },
-//   {
-//     "id": 8,
-//     "name": "Beanie Hat",
-//     "href": "#",
-//     "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-08.jpg",
-//     "imageAlt": "Front of men's Beanie Hat in gray.",
-//     "price": "$25",
-//     "color": "Gray",
-//     "description": "Warm knit • Fold-over brim • One size fits all"
-//   },
-//   {
-//     "id": 9,
-//     "name": "Sunglasses",
-//     "href": "#",
-//     "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-09.jpg",
-//     "imageAlt": "Front of men's Sunglasses in black.",
-//     "price": "$85",
-//     "color": "Black",
-//     "description": "UV protection • Scratch-resistant lenses • Lightweight frame"
-//   },
-//   {
-//     "id": 10,
-//     "name": "Wristwatch",
-//     "href": "#",
-//     "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-10.jpg",
-//     "imageAlt": "Front of men's Wristwatch in silver.",
-//     "price": "$250",
-//     "color": "Silver",
-//     "description": "Quartz movement • Stainless steel • Water-resistant"
-//   },
-//   {
-//     "id": 11,
-//     "name": "Casual Backpack",
-//     "href": "#",
-//     "imageSrc": "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-11.jpg",
-//     "imageAlt": "Front of Casual Backpack in olive.",
-//     "price": "$70",
-//     "color": "Olive",
-//     "description": "Spacious main compartment • Padded straps • Durable material"
-//   }
-//     // More products...
-//   ]
 </script>
 
 <style lang="css" scoped>

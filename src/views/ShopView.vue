@@ -83,166 +83,7 @@
 </section>
 
 </section>
-  <nav class="flex justify-between items-end border-t border-neutral-200" role="navigation" aria-label="pagination">
-    <SfButton
-      size="lg"
-      aria-label="Go to previous page"
-      :disabled="currentPage <= 1"
-      variant="tertiary"
-      class="gap-3 !px-3 sm:px-6"
-      @click="prev"
-    >
-      <template #prefix>
-        <SfIconChevronLeft />
-      </template>
-      <span class="hidden sm:inline-flex"> Previous </span>
-    </SfButton>
-    <ul class="flex justify-center">
-      <li v-if="pageCount != 1">
-        <div
-          :class="[
-            'flex pt-1 border-t-4 border-transparent',
-            { 'font-medium border-t-4 !border-primary-500': currentPage === 1 },
-          ]"
-        >
-          <button
-            type="button"
-            class="min-w-[38px] px-3 sm:px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
-            :aria-current="currentPage === 1"
-            @click="setPage(1)"
-          >
-            1
-          </button>
-        </div>
-      </li>
-      <li v-if="!isFirstPage && !isLastPage">
-        <div class="flex pt-1 border-t-4 border-transparent">
-          <button type="button" disabled aria-hidden="true" class="px-4 py-3 md:w-12 rounded-md text-neutral-500">
-            ...
-          </button>
-        </div>
-      </li>
-      <!-- <li v-if="maxVisiblePages === 1 && currentPage === pageCount">
-        <div class="flex pt-1 border-t-4 border-transparent">
-          <button
-            type="button"
-            class="min-w-[38px] px-3 sm:px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
-            :aria-current="isLastPage - 1 === currentPage"
-            @click="setPage(isLastPage - 1)"
-          >
-            {{ isLastPage - 1 }}
-          </button>
-        </div>
-      </li> -->
 
-    <div class="gap-x-4 gap-y-2 grid-cols-2 inline-grid items-center">
-      <div opacity="50">
-        total:
-      </div>
-      <!-- <div>{{ database.length }}</div> -->
-      <div opacity="50">
-        pageCount:
-      </div>
-      <div>{{ pageCount }}</div>
-      <div opacity="50">
-        currentPageSize:
-      </div>
-      <div>{{ currentPageSize }}</div>
-      <div opacity="50">
-        currentPage:
-      </div>
-      <div>{{ currentPage }}</div>
-      <div opacity="50">
-        isFirstPage:
-      </div>
-      <div>{{ isFirstPage }}</div>
-      <div opacity="50">
-        isLastPage:
-      </div>
-      <div>{{ isLastPage }}</div>
-    </div>
-    <div>
-      <button :disabled="isFirstPage" @click="prev">
-        prev
-      </button>
-      <button :disabled="isLastPage" @click="next">
-        next
-      </button>
-    </div>
-
-      <li v-for="page in pageCount" :key="`page-${page}`">
-        <div
-          :class="[
-            'flex pt-1 border-t-4 border-transparent',
-            { 'font-medium border-t-4 !border-primary-700': currentPage === page },
-          ]"
-        >
-        {{ page }}
-          <button
-            type="button"
-            :class="[
-              'min-w-[38px] px-3 sm:px-4 py-3 md:w-12 text-neutral-500 rounded-md hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900',
-              { '!text-neutral-900 hover:!text-primary-800 active:!text-primary-900': currentPage === page },
-            ]"
-            :aria-label="`Page ${page} of ${currentPage}`"
-            :aria-current="currentPage === page"
-            @click="setPage(page)"
-          >
-            {{ page }}
-          </button>
-        </div>
-      </li>
-      <li v-if="maxVisiblePages === 1 && currentPage === 1">
-        <div class="flex pt-1 border-t-4 border-transparent">
-          <button
-            type="button"
-            class="min-w-[38px] px-3 sm:px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
-            :aria-label="`Page 2 of ${currentPage}`"
-            @click="setPage(2)"
-          >
-            2
-          </button>
-        </div>
-      </li>
-      <li v-if="isLastPage < pageCount - 1">
-        <div class="flex pt-1 border-t-4 border-transparent">
-          <button type="button" disabled aria-hidden="true" class="px-4 py-3 md:w-12 rounded-md text-neutral-500">
-            ...
-          </button>
-        </div>
-      </li>
-      <li v-if="pageCount != currentPage">
-        <div
-          :class="[
-            'flex pt-1 border-t-4 border-transparent',
-            { 'font-medium border-t-4 !border-primary-500': currentPage === currentPage },
-          ]"
-        >
-          <button
-            type="button"
-            class="min-w-[38px] px-3 sm:px-4 py-3 md:w-12 rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-800 active:bg-primary-200 active:text-primary-900"
-            :aria-current="currentPage === currentPage"
-            @click="setPage(currentPage)"
-          >
-            {{ currentPage }}
-          </button>
-        </div>
-      </li>
-    </ul>
-    <SfButton
-      size="lg"
-      aria-label="Go to next page"
-      :disabled="currentPage >= currentPage"
-      variant="tertiary"
-      class="gap-3 !px-3 sm:px-6"
-      @click="next"
-    >
-      <span class="hidden sm:inline-flex"> Next </span>
-      <template #suffix>
-        <SfIconChevronRight />
-      </template>
-    </SfButton>
-  </nav>
     </div>
 
 
@@ -351,20 +192,11 @@ const pageCountChange = () => {
 console.log("Page Count");
 };
 
-const {  currentPage,
-  currentPageSize,
-  pageCount,
-  isFirstPage,
-  isLastPage,
-  prev,
-  next } = useOffsetPagination({
-    total: itemsCount.value,
-  page: 1,
+const { totalPages, pages, selectedPage, startPage, endPage, next, prev, setPage, maxVisiblePages } = usePagination({
+  totalItems:  sessionStorage.getItem("itemCount"),
+  currentPage: 1,
   pageSize: 12,
-  onPageChange: fetchData,
-  onPageSizeChange: fetchData,
-  onPageCountChange: pageCountChange
-  // maxPages: 60 / 12,
+  maxPages: sessionStorage.getItem("itemCount") / 12,
 });
 
 

@@ -258,6 +258,7 @@ const categories = ref([]);
 const subcategories = ref([]);
 let categoryTrack = ref({});
 let selectedCategory = ref({});
+selectedCategory.value = { id: 10734,  name: 'Aluminium'}
 let itemsCount = ref(0);
 const triggerProp = ref(10);
 const componentInstance = getCurrentInstance();
@@ -274,11 +275,7 @@ const displayCategoryProducts = async (id = 0, name = "") => {
   // currentPage.value = triggerProp.value++;
   console.log("itemsCount", itemsCount.value);
   selectedCategory.value = JSON.parse(localStorage.getItem("selectedCategory"));
-  if(categoryTrack) {
-    if (categoryTrack.id !== id) {
-      // window.location.reload();
-    }
-  }
+  window.location.reload();
 };
 
 onBeforeMount(async () => {
@@ -303,7 +300,7 @@ let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
     // localStorage.setItem("itemCount", res.data["productsCount"]);
   
     await nextTick();
-    displayCategoryProducts(aluminiumCat.id, aluminiumCat.name);
+    // displayCategoryProducts(aluminiumCat.id, aluminiumCat.name);
   
 });
 

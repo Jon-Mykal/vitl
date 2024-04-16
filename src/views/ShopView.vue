@@ -251,6 +251,7 @@ import {
 } from '@storefront-ui/vue';
 
 import axios from "axios";
+import orderBy  from 'lodash/orderBy';
 
 let products = ref([]);
 let displayedProductsSource = ref([]);
@@ -309,7 +310,7 @@ onMounted(async () => {
 
     categories.value = res.data["categories"];
     products.value = res.data["products"];
-    products.value = products.value.filter(p => p["show_in_website"]);
+    products.value = orderBy(products.value.filter(p => p["show_in_website"]), ['name'], ['asc']);
     productsSource.value = products.value;
     
 // let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
@@ -320,7 +321,7 @@ onMounted(async () => {
     // localStorage.setItem("itemCount", res.data["productsCount"]);
     selectedCategory.value = JSON.parse(localStorage.getItem("selectedCategory"));
     await nextTick();
-console.log(selectedCategory.value);
+// console.log(selectedCategory.value);
     // if (selectedCategory.value.hasOwnProperty("id")) {
     //   console.log(selectedCategory.value);
       
@@ -358,25 +359,21 @@ const displayedProducts = computedAsync(async () => {
     localStorage.setItem("categories", JSON.stringify(categories.value));
     localStorage.setItem("itemCount", res.data["productsCount"]);
     capturedProducts = JSON.parse(localStorage.getItem("products"));
+
   }
   else {
     capturedProducts = JSON.parse(localStorage.getItem("products"));
     console.log(capturedProducts);
   }
   
-  return capturedProducts.sort((a, b) => {
-  const titleA = a['name'].toUpperCase(); // ignore upper and lowercase
-  const titleB = b['name'].toUpperCase(); // ignore upper and lowercase
-  if (titleA < titleB) {
-    return -1;
-  }
-  if (titleA > titleB) {
-    return 1;
-  }
-
-  // names must be equal
-  return 0;
-}).slice(startIndex, endIndex);
+  
+  console.log(capturedProducts);
+  // return capturedProducts.sort((a, b) => {
+  // const titleA = a['name'].toUpperCase(); // ignore upper and lowercase
+  // const titleB = b['name'].toUpperCase(); // ignore upper and lowercase
+  // console.log(titleA, titleB);
+  // return titleA.localeCompare(titleB);})
+  return capturedProducts.slice(startIndex, endIndex);
 }, JSON.parse(localStorage.getItem("products")));
 
 const open = ref(true);

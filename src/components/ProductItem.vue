@@ -21,23 +21,16 @@
       </SfButton>
     </div>
     <div class="p-4 border-t border-neutral-200">
-      <SfLink href="#" variant="secondary" class="no-underline"> {{ product.name}} </SfLink>
-      <div class="flex items-center pt-1">
-        <SfRating size="xs" :value="5" :max="5" />
-
-        <SfLink href="#" variant="secondary" class="pl-1 no-underline">
-          <SfCounter size="xs">123</SfCounter>
-        </SfLink>
-      </div>
+      <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: product.external_id} }" variant="secondary" class="no-underline"> {{ product.name}} </RouterLink>
       <p class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700">
         {{ product.description }}
       </p>
       <span class="block pb-2 font-bold typography-text-lg">${{ new Intl.NumberFormat('en-US').format(product.price)}}</span>
       <SfButton size="sm" class="bg-black">
-        <template #prefix>
+       <!-- <template #prefix>
           <SfIconShoppingCart size="sm" />
-        </template>
-        Add to cart
+        </template>> -->
+        <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: product.external_id} }" >View</RouterLink>
       </SfButton>
     </div>
   </div>
@@ -54,6 +47,7 @@ import {
   SfListItem,
   SfRating, SfLink, SfButton, SfIconShoppingCart, SfIconFavorite
 } from '@storefront-ui/vue';
+import { RouterLink } from 'vue-router';
  const props = defineProps({
     product: Object
  })

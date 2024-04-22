@@ -25,6 +25,9 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/ShopView.vue"),
+      // beforeEnter: () => {
+      //   // window.location.reload();
+      // }
     },
     {
       path: "/test",
@@ -39,6 +42,16 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/ContactUsView.vue"),
+    },
+    {
+      path: "/product-details",
+      name: "ProductDetails",
+      props: route => ({ query: route.query.id}),
+      // redirect: "https://virginsintltrading.fygaroshops.com",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../components/ProductDetails.vue"),
     },
   ],
 });

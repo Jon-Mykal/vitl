@@ -37,7 +37,7 @@
 </section>
 <section class="col-9 mx-5 -mt-14">
   <section class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 -mt-14">
-    <ProductItem v-for="product in displayedProducts" :key="product.id" :product="product" />
+    <ProductItem v-for="product in displayedProducts" :key="product.external_id" :product="product" />
   <!-- <div class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px]" v-for="product in products" :key="product.id">
     <div class="relative">
       <SfLink href="#" class="block">
@@ -266,19 +266,26 @@ let itemsCount = ref(0);
 let triggerProp =  ref(localStorage.getItem("triggerProp") || 0);
 const componentInstance = getCurrentInstance();
 const displayCategoryProducts = async (id = 0, name = "") => {
+  displayedProducts.value = [];
   products.value = productsSource.value;
   products.value = products.value.filter(p => { 
     return p.category.filter(c => c.id === id).length > 0;
   });
   localStorage.setItem("products", JSON.stringify(products.value));
   localStorage.setItem("itemCount", products.value.length);
-  localStorage.setItem("selectedCategory", JSON.stringify({ id: id, name: name }));
+  // if (id == 0) {
+  //   id = 10734;
+  //   name = 'Aluminium';
+  // }
+  localStorage.setItem("selectedCategory", JSON.stringify({ id, name }));
+  selectedCategory.value = { id, name };
   displayedProductsSource.value = products.value;
   itemsCount.value = products.value.length;
   // currentPage.value = triggerProp.value++;
   console.log("itemsCount", itemsCount.value);
   // if (triggerProp.value > 1) {
-    window.location.reload();
+    displayedProductsPerCategory();
+    // window.location.reload();
   // }
   
 };
@@ -291,11 +298,14 @@ onBeforeMount(async () => {
 // let aluminiumCat = cats.filter(c => c.name == "Aluminium")[0];
 // selectedCategory.value = { id: 10734, name: 'Aluminium'};
     // tri
-
+   
     if (triggerProp.value === 0) {
       triggerProp.value++;
       localStorage.setItem('triggerProp', triggerProp.value)
       displayCategoryProducts(10734, 'Aluminium');  
+    }
+    else {
+
     }
 
     // (triggerProp.value === 1) {
@@ -320,12 +330,10 @@ onMounted(async () => {
     
     // localStorage.setItem("itemCount", res.data["productsCount"]);
     selectedCategory.value = JSON.parse(localStorage.getItem("selectedCategory"));
+  
     await nextTick();
-// console.log(selectedCategory.value);
-    // if (selectedCategory.value.hasOwnProperty("id")) {
-    //   console.log(selectedCategory.value);
-      
-    // }
+    displayCategoryProducts(selectedCategory.value.id, selectedCategory.value.name);
+  
     
   
 });
@@ -345,8 +353,40 @@ const { totalPages, pages, selectedPage, startPage, endPage, next, prev, setPage
 });
 
 
-const displayedProducts = computedAsync(async () => {
-  const startIndex = (currentPage.value * 12) - 12;
+const displayedProducts = ref([])
+const displayedProductsPerCategory = () => {
+  const startIndex = (selectedPage.value * 12) - 12;
+  const endIndex = startIndex + 12;
+  let capturedProducts = [];
+  if (!localStorage.getItem("products")) {
+    // console.log("In this block")
+    // let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
+    // categories.value = res.data["categories"];
+    // products.value = res.data["products"];
+    // products.value = products.value.filter(p => p["show_in_website"]);
+    localStorage.setItem("products", JSON.stringify(products.value));
+    localStorage.setItem("categories", JSON.stringify(categories.value));
+    localStorage.setItem("itemCount", res.data["productsCount"]);
+    capturedProducts = JSON.parse(localStorage.getItem("products"));
+
+  }
+  else {
+    capturedProducts = JSON.parse(localStorage.getItem("products"));
+    console.log(capturedProducts);
+  }
+  
+  
+  // console.log(capturedProducts);
+  // return capturedProducts.sort((a, b) => {
+  // const titleA = a['name'].toUpperCase(); // ignore upper and lowercase
+  // const titleB = b['name'].toUpperCase(); // ignore upper and lowercase
+  // console.log(titleA, titleB);
+  // return titleA.localeCompare(titleB);})
+  displayedProducts.value = capturedProducts.slice(startIndex, endIndex);
+  
+};
+const displayedProductsV2 = ref(async () => {
+  const startIndex = (selectedPage.value * 12) - 12;
   const endIndex = startIndex + 12;
   let capturedProducts = [];
   if (!localStorage.getItem("products")) {
@@ -374,7 +414,7 @@ const displayedProducts = computedAsync(async () => {
   // console.log(titleA, titleB);
   // return titleA.localeCompare(titleB);})
   return capturedProducts.slice(startIndex, endIndex);
-}, JSON.parse(localStorage.getItem("products")));
+});
 
 const open = ref(true);
 

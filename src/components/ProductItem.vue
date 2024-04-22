@@ -52,6 +52,7 @@ import { RouterLink } from 'vue-router';
     product: Object
  })
  const prodImage = props.product.images.length ? props.product.images[0]['image'] : '';
+ console.log(prodImage);
 </script>
 
 <style lang="scss" scoped>

@@ -1,28 +1,30 @@
 <template>
   <section class="row">
-    <section class="col-6"></section>
-    <section class="col-6">
-      <div
-        class="inline-flex items-center justify-center text-sm font-medium text-white bg-secondary-600 py-1.5 px-3 mb-4"
-      >
-        <SfIconSell size="sm" class="mr-1.5" />
-        Sale
-      </div>
-      <h1 class="mb-1 font-bold typography-headline-4">{{ productData.name}}</h1>
-      <label v-if="productData.product_versions">
-    <select placeholder="-- Select --" @change="updateVersionPrice($event)">
-      <option value="Please select an option">-- Select --</option>
+    <section class="col-6 px-5">
+      <img :src="productData?.images[0]?.image" class="img-responsive" alt="">
+    </section>
+    <section class="col-6 px-5">
+      <h1 class="mb-1 font-bold typography-headline-4">{{ productData.name }}</h1>
+ 
+      <div  v-if="productData.product_versions">
+        <strong class="block font-bold tw-typography-headline-5 display-5" v-if="versionPrice > 0">${{ new Intl.NumberFormat('en-US').format(versionPrice)}} JMD</strong>
+      <span class="block typography-headline-3 text-danger pt-3" v-else>{{ 'No price available. Please select an option'}}</span>
+      <label class="pt-2">
+        <label class="pb-2" for="">Product Options</label>
+    <select @change="updateVersionPrice($event)" class="form-control px-5">
+      <option value="0">-- Select an option --</option>
       <option v-for="prodVersion in productVersionOptions" :key="prodVersion[0]" :value="prodVersion[1]['optionPrice']">
         {{ prodVersion[1]['optionName'] }}
       </option>
     </select>
     
   </label>
-      <strong class="block font-bold typography-headline-3" v-if="!isNaN(versionPrice)">${{ new Intl.NumberFormat('en-US').format(versionPrice)}}</strong>
-      <span class="block typography-headline-3" v-else>{{ 'No price available. Please select an option'}}</span>
+      </div>
+      <strong v-else class="block font-bold tw-typography-headline-5 display-5">${{ new Intl.NumberFormat('en-US').format(productData.price)}} JMD</strong>
+      <button class="btn-book-a-table px-5 mt-3 text-uppercase font-bold" :disabled="!buyingEnabled">Buy</button>
       <!-- <span class="block pb-2 font-bold typography-text-lg"></span> -->
 
-      <div class="py-4 mb-4 border-gray-200 border-y">
+      <!-- <div class="py-4 mb-4 border-gray-200 border-y">
         <div
           class="bg-primary-100 text-primary-700 flex justify-center gap-1.5 py-1.5 typography-text-sm items-center mb-4 rounded-md"
         >
@@ -71,12 +73,26 @@
 
         </div>
   
-      </div>
+      </div> -->
 
     </section>
   </section>
+  <section class="d-flex justify-content-center">
+    <a href="/shop" class="text-center btn btn-outline-secondary">Back to Products</a>
+  </section>
   </template>
   
+  <style>
+  .btn-custom {
+    background-color: rgba(206, 18, 18, 0.8);
+  }
+  .btn-book-a-table:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+</style>
+  
+
   <script lang="ts" setup>
   import { onMounted, ref, } from 'vue';
   import { useRoute, useRouter} from 'vue-router'
@@ -110,9 +126,10 @@
    let data = localStorage.getItem("products")?.toString();
    let currentProducts = JSON.parse(data || '');
    let productData = currentProducts.filter(p => p.external_id == route.query.id)[0];
-   let versionPrice = ref(0 || productData.price);
+   let prodHasVersions = ref(false);
+   let versionPrice = ref(0);
    console.log(productData);
-
+  let buyingEnabled = ref(false);
    let prodVersions = productData.product_versions;
     let productVersionOptions = ref(new Map());
     let productVersionOptions_temp = [];
@@ -125,10 +142,21 @@
         let option = {optionName, optionPrice};
         productVersionOptions.value.set(prodVersion.code, option);
       }
+
+      prodHasVersions.value = productData.product_versions != null;
+      if (!prodHasVersions.value) {
+        buyingEnabled.value = true;
+      }
     });
    const updateVersionPrice = ({target}) => {
     const {value} = target;
     versionPrice.value = value;
+    if (versionPrice.value > 0) {
+      buyingEnabled.value = true
+    }
+    else {
+      buyingEnabled.value = false;
+    }
    };
   const inputId = useId();
   const min = ref(1);

@@ -382,7 +382,7 @@ const displayedProductsPerCategory = () => {
   // const titleB = b['name'].toUpperCase(); // ignore upper and lowercase
   // console.log(titleA, titleB);
   // return titleA.localeCompare(titleB);})
-  displayedProducts.value = capturedProducts.slice(startIndex, endIndex);
+  displayedProducts.value = capturedProducts/*.slice(startIndex, endIndex);*/
   
 };
 const displayedProductsV2 = ref(async () => {
@@ -413,7 +413,7 @@ const displayedProductsV2 = ref(async () => {
   // const titleB = b['name'].toUpperCase(); // ignore upper and lowercase
   // console.log(titleA, titleB);
   // return titleA.localeCompare(titleB);})
-  return capturedProducts.slice(startIndex, endIndex);
+  return capturedProducts/*.slice(startIndex, endIndex);*/
 });
 
 const open = ref(true);

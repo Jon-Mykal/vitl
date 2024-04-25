@@ -26,7 +26,7 @@
         {{ product.description }}
       </p>
       <!-- <span class="block pb-2 font-bold typography-text-lg">${{ new Intl.NumberFormat('en-US').format(numeral(product.price).format('0.00'))}}</span> -->
-      <span class="block pb-2 font-bold typography-text-lg">${{ numeral(product.price).format('0.00')}}</span>
+      <span class="block pb-2 font-bold typography-text-lg">${{ numeral(product.price).format('0,0.00')}}</span>
       <SfButton size="sm" class="bg-black">
        <!-- <template #prefix>
           <SfIconShoppingCart size="sm" />

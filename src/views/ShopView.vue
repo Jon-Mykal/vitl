@@ -263,7 +263,7 @@ let selectedCategory = ref({});
 // let selectedCategory = ref({});
 
 let itemsCount = ref(0);
-let triggerProp =  ref(localStorage.getItem("triggerProp") || 0);
+let triggerProp =  ref(sessionStorage.getItem("triggerProp") || 0);
 const componentInstance = getCurrentInstance();
 const displayCategoryProducts = async (id = 0, name = "") => {
   displayedProducts.value = [];
@@ -271,13 +271,13 @@ const displayCategoryProducts = async (id = 0, name = "") => {
   products.value = products.value.filter(p => { 
     return p.category.filter(c => c.id === id).length > 0;
   });
-  localStorage.setItem("products", JSON.stringify(products.value));
-  localStorage.setItem("itemCount", products.value.length);
+  sessionStorage.setItem("products", JSON.stringify(products.value));
+  sessionStorage.setItem("itemCount", products.value.length);
   // if (id == 0) {
   //   id = 10734;
   //   name = 'Aluminium';
   // }
-  localStorage.setItem("selectedCategory", JSON.stringify({ id, name }));
+  sessionStorage.setItem("selectedCategory", JSON.stringify({ id, name }));
   selectedCategory.value = { id, name };
   displayedProductsSource.value = products.value;
   itemsCount.value = products.value.length;
@@ -301,7 +301,7 @@ onBeforeMount(async () => {
    
     if (triggerProp.value === 0) {
       triggerProp.value++;
-      localStorage.setItem('triggerProp', triggerProp.value)
+      sessionStorage.setItem('triggerProp', triggerProp.value)
       displayCategoryProducts(10734, 'Aluminium');  
     }
     else {
@@ -324,12 +324,12 @@ onMounted(async () => {
     productsSource.value = products.value;
     
 // let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
-    localStorage.setItem("products", JSON.stringify(products.value));
-    localStorage.setItem("productsSource", JSON.stringify(products.value));
-    localStorage.setItem("categories", JSON.stringify(categories.value));
+    sessionStorage.setItem("products", JSON.stringify(products.value));
+    sessionStorage.setItem("productsSource", JSON.stringify(products.value));
+    sessionStorage.setItem("categories", JSON.stringify(categories.value));
     
-    // localStorage.setItem("itemCount", res.data["productsCount"]);
-    selectedCategory.value = JSON.parse(localStorage.getItem("selectedCategory"));
+    // sessionStorage.setItem("itemCount", res.data["productsCount"]);
+    selectedCategory.value = JSON.parse(sessionStorage.getItem("selectedCategory"));
   
     await nextTick();
     displayCategoryProducts(selectedCategory.value.id, selectedCategory.value.name);
@@ -347,7 +347,7 @@ console.log("Page Count");
 };
 
 const { totalPages, pages, selectedPage, startPage, endPage, next, prev, setPage, maxVisiblePages } = usePagination({
-  totalItems:  localStorage.getItem("itemCount"),
+  totalItems:  sessionStorage.getItem("itemCount"),
   currentPage: 1,
   pageSize: 12
 });
@@ -358,20 +358,20 @@ const displayedProductsPerCategory = () => {
   const startIndex = (selectedPage.value * 12) - 12;
   const endIndex = startIndex + 12;
   let capturedProducts = [];
-  if (!localStorage.getItem("products")) {
+  if (!sessionStorage.getItem("products")) {
     // console.log("In this block")
     // let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
     // categories.value = res.data["categories"];
     // products.value = res.data["products"];
     // products.value = products.value.filter(p => p["show_in_website"]);
-    localStorage.setItem("products", JSON.stringify(products.value));
-    localStorage.setItem("categories", JSON.stringify(categories.value));
-    localStorage.setItem("itemCount", res.data["productsCount"]);
-    capturedProducts = JSON.parse(localStorage.getItem("products"));
+    sessionStorage.setItem("products", JSON.stringify(products.value));
+    sessionStorage.setItem("categories", JSON.stringify(categories.value));
+    sessionStorage.setItem("itemCount", res.data["productsCount"]);
+    capturedProducts = JSON.parse(sessionStorage.getItem("products"));
 
   }
   else {
-    capturedProducts = JSON.parse(localStorage.getItem("products"));
+    capturedProducts = JSON.parse(sessionStorage.getItem("products"));
     console.log(capturedProducts);
   }
   
@@ -389,20 +389,20 @@ const displayedProductsV2 = ref(async () => {
   const startIndex = (selectedPage.value * 12) - 12;
   const endIndex = startIndex + 12;
   let capturedProducts = [];
-  if (!localStorage.getItem("products")) {
+  if (!sessionStorage.getItem("products")) {
     console.log("In this block")
     let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
     categories.value = res.data["categories"];
     products.value = res.data["products"];
     products.value = products.value.filter(p => p["show_in_website"]);
-    localStorage.setItem("products", JSON.stringify(products.value));
-    localStorage.setItem("categories", JSON.stringify(categories.value));
-    localStorage.setItem("itemCount", res.data["productsCount"]);
-    capturedProducts = JSON.parse(localStorage.getItem("products"));
+    sessionStorage.setItem("products", JSON.stringify(products.value));
+    sessionStorage.setItem("categories", JSON.stringify(categories.value));
+    sessionStorage.setItem("itemCount", res.data["productsCount"]);
+    capturedProducts = JSON.parse(sessionStorage.getItem("products"));
 
   }
   else {
-    capturedProducts = JSON.parse(localStorage.getItem("products"));
+    capturedProducts = JSON.parse(sessionStorage.getItem("products"));
     console.log(capturedProducts);
   }
   

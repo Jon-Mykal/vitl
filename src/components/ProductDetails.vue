@@ -124,7 +124,7 @@
     product: Object
   });
    const route = useRoute();
-   let data = localStorage.getItem("products")?.toString();
+   let data = sessionStorage.getItem("products")?.toString();
    let currentProducts = JSON.parse(data || '');
    let productData = currentProducts.filter(p => p.external_id == route.query.id)[0];
    let prodHasVersions = ref(false);

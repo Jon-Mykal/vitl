@@ -10,15 +10,15 @@
           height="300"
         />
       </SfLink>
-      <SfButton
+      <!-- <SfButton
         variant="tertiary"
         size="sm"
         square
         class="absolute bottom-0 right-0 mr-2 mb-2 bg-white ring-1 ring-inset ring-neutral-200 !rounded-full"
         aria-label="Add to wishlist"
       >
-        <!-- <SfIconFavorite size="sm" /> -->
-      </SfButton>
+        <SfIconFavorite size="sm" />
+      </SfButton> -->
     </div>
     <div class="p-4 border-t border-neutral-200">
       <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: product.external_id} }" variant="secondary" class="no-underline"> {{ product.name}} </RouterLink>

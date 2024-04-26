@@ -36,7 +36,7 @@
   </SfAccordionItem>
 </section>
 <section class="col-9 mx-5 -mt-14">
-  <section class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 -mt-14">
+  <section class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8-mt-14">
     <ProductItem v-for="product in displayedProducts" :key="product.external_id" :product="product" />
   <!-- <div class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px]" v-for="product in products" :key="product.id">
     <div class="relative">

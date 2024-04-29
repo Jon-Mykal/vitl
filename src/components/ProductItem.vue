@@ -21,7 +21,7 @@
       </SfButton> -->
     </div>
     <div class="p-4 border-t border-neutral-200">
-      <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: product.external_id} }" variant="secondary" class="no-underline"> {{ product.name}} </RouterLink>
+      <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: product.external_id} }" variant="secondary" class="no-underline"> {{ product.name.toUpperCase()}} </RouterLink>
       <p class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700">
         {{ product.description }}
       </p>

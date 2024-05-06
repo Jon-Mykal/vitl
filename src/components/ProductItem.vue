@@ -5,9 +5,7 @@
         <img
           :src="prodImage"
           :alt="product.imageAlt"
-          class="block object-cover h-auto rounded-md aspect-square"
-          width="300"
-          height="300"
+          class="img-fluid pt-3 px-1"
         />
       </SfLink>
       <!-- <SfButton

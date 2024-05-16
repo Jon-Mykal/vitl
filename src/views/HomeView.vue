@@ -67,7 +67,7 @@ backdrop-filter: blur(4.4px);
             data-aos-delay="300"
           >
             <p class="lead">
-              We're here to provide you with a wide range of hardware supplies
+              We're here to provide you with a wide range of supplies
               for you to either get started or finish your next building
               project. We have products covering various sections of a project
               including but not limited to the

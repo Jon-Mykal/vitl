@@ -39,9 +39,9 @@ backdrop-filter: blur(4.4px);
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            <a href="#book-a-table" class="btn-book-a-table"
+            <!-- <a href="#book-a-table" class="btn-book-a-table"
               >View Our Products</a
-            >
+            > -->
           </div>
         </div>
         <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">

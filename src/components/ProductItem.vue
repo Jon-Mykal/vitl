@@ -29,7 +29,7 @@
        <!-- <template #prefix>
           <SfIconShoppingCart size="sm" />
         </template>> -->
-       View
+        <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: product.external_id} }" variant="secondary" class="no-underline"> View </RouterLink>
       </SfButton>
     </div>
   </div>

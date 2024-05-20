@@ -9,6 +9,22 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(4.4px);
 -webkit-backdrop-filter: blur(4.4px);
 `;
+import { onMounted } from "vue";
+import axios from "axios";
+onMounted(async () => {
+  let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
+    
+// let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
+    sessionStorage.setItem("products", JSON.stringify(res.data["products"]));
+    sessionStorage.setItem("productsSource", JSON.stringify(res.data["productsSource"]));
+    sessionStorage.setItem("categories", JSON.stringify(res.data["categories"]));
+    
+  
+  
+  
+    
+  
+});
 </script>
 
 <template>
@@ -148,7 +164,7 @@ backdrop-filter: blur(4.4px);
 
             <div class="row gy-5">
               <div class="col-lg-4 menu-item">
-                <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: '45fbd29d-ee90-4d07-a7cd-94d10fbe452d'} }" >
+                <RouterLink :to="{name: 'ProductDetails', query: {id: '45fbd29d-ee90-4d07-a7cd-94d10fbe452d'} }" >
                   <img
                     class="img-fluid pb-3"
                     src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371679/f8bd0f34-e92e-4a09-8ea1-7e830211baa6.jpg"
@@ -165,7 +181,7 @@ backdrop-filter: blur(4.4px);
               <!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: '3fa19472-76a7-49aa-9b36-dd843baf20d0'} }"
+                <RouterLink :to="{name: 'ProductDetails', query: {id: '3fa19472-76a7-49aa-9b36-dd843baf20d0'} }"
                   class="glightbox"
                 >
                   <img
@@ -176,14 +192,14 @@ backdrop-filter: blur(4.4px);
                 </RouterLink>
                 <h4>Aluminium Shower Towel Bar 32"</h4>
                 <p class="price">J$363.00</p>
-                <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: '3fa19472-76a7-49aa-9b36-dd843baf20d0'} }" 
+                <RouterLink :to="{name: 'ProductDetails', query: {id: '3fa19472-76a7-49aa-9b36-dd843baf20d0'} }" 
                   class="btn-book-a-table px-4"
                   >Buy</RouterLink>
               </div>
               <!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: '326cb180-f8da-4970-9efc-ce79f90d1131'} }" 
+                <RouterLink :to="{name: 'ProductDetails', query: {id: '326cb180-f8da-4970-9efc-ce79f90d1131'} }" 
                   class="glightbox"
                 >
                   <img
@@ -194,7 +210,7 @@ backdrop-filter: blur(4.4px);
                 </RouterLink>
                 <h4 class="text-capitalize">Fixed Louvre Frame - 21FT</h4>
                 <p class="price">J$3,458.12</p>
-                <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: '326cb180-f8da-4970-9efc-ce79f90d1131'} }" 
+                <RouterLink :to="{name: 'ProductDetails', query: {id: '326cb180-f8da-4970-9efc-ce79f90d1131'} }" 
                   class="btn-book-a-table px-4"
                   >Buy</RouterLink>
               </div>
@@ -211,7 +227,7 @@ backdrop-filter: blur(4.4px);
             <div class="row gy-5">
               <div class="col-lg-4 menu-item">
                 <RouterLink
-                  :to="{name: 'ProductDetails', params: {product}, query: {id: 'feb7994a-c5d1-46cc-be93-208ae74e7e08'} }" 
+                  :to="{name: 'ProductDetails', query: {id: 'feb7994a-c5d1-46cc-be93-208ae74e7e08'} }" 
                   class="glightbox"
                 >
                   <img
@@ -224,7 +240,7 @@ backdrop-filter: blur(4.4px);
                 <p class="price">J$2,586.38</p>
                 <RouterLink
                   class="btn-book-a-table px-4"
-                  :to="{name: 'ProductDetails', params: {product}, query: {id: 'feb7994a-c5d1-46cc-be93-208ae74e7e08'} }" 
+                  :to="{name: 'ProductDetails', query: {id: 'feb7994a-c5d1-46cc-be93-208ae74e7e08'} }" 
                   >Buy</RouterLink
                 >
               </div>
@@ -232,7 +248,7 @@ backdrop-filter: blur(4.4px);
 
               <div class="col-lg-4 menu-item">
                 <RouterLink
-                  :to="{name: 'ProductDetails', params: {product}, query: {id: '8f4d1246-34ac-432d-96dd-2364cd623476'} }" 
+                  :to="{name: 'ProductDetails', query: {id: '8f4d1246-34ac-432d-96dd-2364cd623476'} }" 
                   class="glightbox"
                 >
                   <img
@@ -246,7 +262,7 @@ backdrop-filter: blur(4.4px);
                 <p class="price">J$27,060.00</p>
                 <RouterLink
                   class="btn-book-a-table px-4"
-                  :to="{name: 'ProductDetails', params: {product}, query: {id: '8f4d1246-34ac-432d-96dd-2364cd623476'} }" 
+                  :to="{name: 'ProductDetails', query: {id: '8f4d1246-34ac-432d-96dd-2364cd623476'} }" 
                   >Buy</RouterLink
                 >
               </div>
@@ -254,7 +270,7 @@ backdrop-filter: blur(4.4px);
 
               <div class="col-lg-4 menu-item">
                 <RouterLink
-                  :to="{name: 'ProductDetails', params: {product}, query: {id: '3fdf1765-50ca-4eff-99d9-ca0f5713f769'} }" 
+                  :to="{name: 'ProductDetails', query: {id: '3fdf1765-50ca-4eff-99d9-ca0f5713f769'} }" 
                   class="glightbox"
                 >
                   <img
@@ -267,7 +283,7 @@ backdrop-filter: blur(4.4px);
                 <p class="price">J$1,773.75</p>
                 <RouterLink
                   class="btn-book-a-table px-4"
-                  :to="{name: 'ProductDetails', params: {product}, query: {id: '3fdf1765-50ca-4eff-99d9-ca0f5713f769'} }" 
+                  :to="{name: 'ProductDetails', query: {id: '3fdf1765-50ca-4eff-99d9-ca0f5713f769'} }" 
                   >Buy</RouterLink
                 >
               </div>
@@ -627,31 +643,7 @@ backdrop-filter: blur(4.4px);
     </section>
   </main>
 </template>
-<script>
-
-import { onMounted } from "vue";
-onMounted(async () => {
-  let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
-
-    categories.value = res.data["categories"];
-    products.value = res.data["products"];
-    products.value = orderBy(products.value.filter(p => p["show_in_website"]), ['name'], ['asc']);
-    productsSource.value = products.value;
-    
-// let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
-    sessionStorage.setItem("products", JSON.stringify(products.value));
-    sessionStorage.setItem("productsSource", JSON.stringify(products.value));
-    sessionStorage.setItem("categories", JSON.stringify(categories.value));
-    
-    // sessionStorage.setItem("itemCount", res.data["productsCount"]);
-    selectedCategory.value = JSON.parse(sessionStorage.getItem("selectedCategory"));
-  
-    await nextTick();
-    displayCategoryProducts(selectedCategory.value.id, selectedCategory.value.name);
-  
-    
-  
-});
+<script setup>
 </script>
 <style lang="css" scoped>
 .menu {

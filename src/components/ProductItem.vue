@@ -29,7 +29,7 @@
        <!-- <template #prefix>
           <SfIconShoppingCart size="sm" />
         </template>> -->
-        -
+       View
       </SfButton>
     </div>
   </div>

@@ -210,8 +210,8 @@ backdrop-filter: blur(4.4px);
 
             <div class="row gy-5">
               <div class="col-lg-4 menu-item">
-                <a
-                  href="https://virginsintltrading.fygaroshops.com/products/feb7994a-c5d1-46cc-be93-208ae74e7e08/"
+                <RouterLink
+                  :to="{name: 'ProductDetails', params: {product}, query: {id: 'feb7994a-c5d1-46cc-be93-208ae74e7e08'} }" 
                   class="glightbox"
                 >
                   <img
@@ -219,20 +219,20 @@ backdrop-filter: blur(4.4px);
                     src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
                     alt=""
                   />
-                </a>
+                </RouterLink>
                 <h4>Balcony Connector 90%</h4>
                 <p class="price">J$2,586.38</p>
-                <a
+                <RouterLink
                   class="btn-book-a-table px-4"
-                  href="https://virginsintltrading.fygaroshops.com/products/feb7994a-c5d1-46cc-be93-208ae74e7e08/"
-                  >Buy</a
+                  :to="{name: 'ProductDetails', params: {product}, query: {id: 'feb7994a-c5d1-46cc-be93-208ae74e7e08'} }" 
+                  >Buy</RouterLink
                 >
               </div>
               <!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a
-                  href="https://virginsintltrading.fygaroshops.com/products/8f4d1246-34ac-432d-96dd-2364cd623476/"
+                <RouterLink
+                  :to="{name: 'ProductDetails', params: {product}, query: {id: '8f4d1246-34ac-432d-96dd-2364cd623476'} }" 
                   class="glightbox"
                 >
                   <img
@@ -240,21 +240,21 @@ backdrop-filter: blur(4.4px);
                     src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371745/4a1eb54b-85b1-4d14-9da6-dbae36239c34.jpg"
                     alt=""
                   />
-                </a>
+                </RouterLink>
                 <h4>Balcony Tubing Satin</h4>
 
                 <p class="price">J$27,060.00</p>
-                <a
+                <RouterLink
                   class="btn-book-a-table px-4"
-                  href="https://virginsintltrading.fygaroshops.com/products/8f4d1246-34ac-432d-96dd-2364cd623476/"
-                  >Buy</a
+                  :to="{name: 'ProductDetails', params: {product}, query: {id: '8f4d1246-34ac-432d-96dd-2364cd623476'} }" 
+                  >Buy</RouterLink
                 >
               </div>
               <!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a
-                  href="https://virginsintltrading.fygaroshops.com/products/7553faa2-9ace-44bb-93f8-5e0b435f43ab/"
+                <RouterLink
+                  :to="{name: 'ProductDetails', params: {product}, query: {id: '3fdf1765-50ca-4eff-99d9-ca0f5713f769'} }" 
                   class="glightbox"
                 >
                   <img
@@ -262,13 +262,13 @@ backdrop-filter: blur(4.4px);
                     src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371744/0d647bac-ca6a-4a5c-b286-e51d18a4f64c.jpg"
                     alt=""
                   />
-                </a>
+                </RouterLink>
                 <h4>Balcony Tubing Connector</h4>
                 <p class="price">J$1,773.75</p>
-                <a
+                <RouterLink
                   class="btn-book-a-table px-4"
-                  href="https://virginsintltrading.fygaroshops.com/products/7553faa2-9ace-44bb-93f8-5e0b435f43ab/"
-                  >Buy</a
+                  :to="{name: 'ProductDetails', params: {product}, query: {id: '3fdf1765-50ca-4eff-99d9-ca0f5713f769'} }" 
+                  >Buy</RouterLink
                 >
               </div>
               <!-- Menu Item -->
@@ -276,7 +276,7 @@ backdrop-filter: blur(4.4px);
           </div>
           <!-- End Breakfast Menu Content -->
 
-          <div class="tab-pane fade" id="menu-shower" role="tabpanel">
+          <!-- <div class="tab-pane fade" id="menu-shower" role="tabpanel">
             <div class="tab-header text-center">
               <h3>Shower</h3>
             </div>
@@ -292,53 +292,51 @@ backdrop-filter: blur(4.4px);
                 </a>
                 <h4>Shower Mixer</h4>
                 <p class="price">$30,225.00</p>
-                <a
+                <RouterLink
                   class="btn-book-a-table px-4"
                   href="https://virginsintltrading.fygaroshops.com/products/ab4cf01d-844e-40c0-8d95-d864b3ddbf4d/"
-                  >Buy</a
+                  >Buy</RouterLink
                 >
               </div>
-              <!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-1.png" class="glightbox">
+                <RouterLink href="assets/img/menu/menu-item-1.png" class="glightbox">
                   <img
                     class="img-fluid"
                     src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
                     alt=""
                   />
-                </a>
+                </RouterLink>
                 <h4>Aut Luia</h4>
                 <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
                 <p class="price">$14.95</p>
-                <a
+                <RouterLink
                   class="btn-book-a-table px-4"
                   href="https://virginsintltrading.fygaroshops.com/products/3fa19472-76a7-49aa-9b36-dd843baf20d0/"
-                  >Buy</a
+                  >Buy</RouterLink
                 >
               </div>
-              <!-- Menu Item -->
+           
 
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-1.png" class="glightbox">
+                <RouterLink href="assets/img/menu/menu-item-1.png" class="glightbox">
                   <img
                     class="img-fluid"
                     src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
                     alt=""
                   />
-                </a>
+                </RouterLink>
                 <h4>Est Eligendi</h4>
                 <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
                 <p class="price">$8.95</p>
-                <a
+                <RouterLink
                   class="btn-book-a-table px-4"
                   href="https://virginsintltrading.fygaroshops.com/products/3fa19472-76a7-49aa-9b36-dd843baf20d0/"
-                  >Buy</a
+                  >Buy</RouterLink
                 >
               </div>
-              <!-- Menu Item -->
             </div>
-          </div>
+          </div> -->
           <!-- End Starter Menu Content -->
         </div>
       </div>
@@ -629,6 +627,32 @@ backdrop-filter: blur(4.4px);
     </section>
   </main>
 </template>
+<script>
+
+import { onMounted } from "vue";
+onMounted(async () => {
+  let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
+
+    categories.value = res.data["categories"];
+    products.value = res.data["products"];
+    products.value = orderBy(products.value.filter(p => p["show_in_website"]), ['name'], ['asc']);
+    productsSource.value = products.value;
+    
+// let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
+    sessionStorage.setItem("products", JSON.stringify(products.value));
+    sessionStorage.setItem("productsSource", JSON.stringify(products.value));
+    sessionStorage.setItem("categories", JSON.stringify(categories.value));
+    
+    // sessionStorage.setItem("itemCount", res.data["productsCount"]);
+    selectedCategory.value = JSON.parse(sessionStorage.getItem("selectedCategory"));
+  
+    await nextTick();
+    displayCategoryProducts(selectedCategory.value.id, selectedCategory.value.name);
+  
+    
+  
+});
+</script>
 <style lang="css" scoped>
 .menu {
   background-color: #f8f8f8;

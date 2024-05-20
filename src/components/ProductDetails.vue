@@ -7,7 +7,7 @@
       <h1 class="mb-1 font-bold typography-headline-4">{{ productData.name }}</h1>
  
       <div  v-if="productData.product_versions">
-        <strong class="block font-bold tw-typography-headline-5 display-5" v-if="versionPrice > 0">${{ numeral(versionPrice).format('0.00')}} JMD</strong>
+        <strong class="block font-bold tw-typography-headline-5 display-5" v-if="versionPrice > 0">${{ numeral(versionPrice).format('0,0.00')}} JMD</strong>
       <span class="block typography-headline-3 text-danger pt-3" v-else>{{ 'No price available. Please select an option'}}</span>
       <label class="pt-2">
         <label class="pb-2" for="">Product Options</label>
@@ -20,7 +20,7 @@
     
   </label>
       </div>
-      <strong v-else class="block font-bold tw-typography-headline-5 display-5">${{ numeral(productData.price).format('0.00')}} JMD</strong>
+      <strong v-else class="block font-bold tw-typography-headline-5 display-5">${{ numeral(productData.price).format('0,0.00')}} JMD</strong>
       <button class="btn-book-a-table px-5 mt-3 text-uppercase font-bold" :disabled="!buyingEnabled">Buy</button>
       <!-- <span class="block pb-2 font-bold typography-text-lg"></span> -->
 

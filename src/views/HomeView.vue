@@ -148,29 +148,24 @@ backdrop-filter: blur(4.4px);
 
             <div class="row gy-5">
               <div class="col-lg-4 menu-item">
-                <a
-                  href="https://virginsintltrading.fygaroshops.com/products/45fbd29d-ee90-4d07-a7cd-94d10fbe452d/"
-                  class="glightbox"
-                >
+                <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: '45fbd29d-ee90-4d07-a7cd-94d10fbe452d'} }" >
                   <img
                     class="img-fluid pb-3"
                     src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371679/f8bd0f34-e92e-4a09-8ea1-7e830211baa6.jpg"
                     alt=""
                   />
-                </a>
+                </RouterLink>
                 <h4>3/4 Round - 21FT</h4>
                 <p class="price">J$1,114.12</p>
-                <a
+                <RouterLink
                   class="btn-book-a-table px-4"
-                  href="https://virginsintltrading.fygaroshops.com/products/45fbd29d-ee90-4d07-a7cd-94d10fbe452d/"
-                  >Buy</a
-                >
+                  :to="{name: 'ProductDetails', query: {id: '45fbd29d-ee90-4d07-a7cd-94d10fbe452d'} }"
+                  >Buy</RouterLink>
               </div>
               <!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a
-                  href="https://virginsintltrading.fygaroshops.com/products/3fa19472-76a7-49aa-9b36-dd843baf20d0/"
+                <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: '3fa19472-76a7-49aa-9b36-dd843baf20d0'} }"
                   class="glightbox"
                 >
                   <img
@@ -178,20 +173,17 @@ backdrop-filter: blur(4.4px);
                     src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371684/4998d68a-6f29-456f-914c-72320c4a1b47.jpg"
                     alt=""
                   />
-                </a>
+                </RouterLink>
                 <h4>Aluminium Shower Towel Bar 32"</h4>
                 <p class="price">J$363.00</p>
-                <a
+                <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: '3fa19472-76a7-49aa-9b36-dd843baf20d0'} }" 
                   class="btn-book-a-table px-4"
-                  href="https://virginsintltrading.fygaroshops.com/products/3fa19472-76a7-49aa-9b36-dd843baf20d0/"
-                  >Buy</a
-                >
+                  >Buy</RouterLink>
               </div>
               <!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <a
-                  href="https://virginsintltrading.fygaroshops.com/products/326cb180-f8da-4970-9efc-ce79f90d1131/"
+                <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: '326cb180-f8da-4970-9efc-ce79f90d1131'} }" 
                   class="glightbox"
                 >
                   <img
@@ -199,14 +191,12 @@ backdrop-filter: blur(4.4px);
                     src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371706/afe2ca9f-f47a-4d51-bb85-8b7f1596385d.jpg"
                     alt=""
                   />
-                </a>
+                </RouterLink>
                 <h4 class="text-capitalize">Fixed Louvre Frame - 21FT</h4>
                 <p class="price">J$3,458.12</p>
-                <a
+                <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: '326cb180-f8da-4970-9efc-ce79f90d1131'} }" 
                   class="btn-book-a-table px-4"
-                  href="https://virginsintltrading.fygaroshops.com/products/326cb180-f8da-4970-9efc-ce79f90d1131/"
-                  >Buy</a
-                >
+                  >Buy</RouterLink>
               </div>
               <!-- Menu Item -->
             </div>

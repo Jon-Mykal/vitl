@@ -19,16 +19,20 @@
           :href="category.link"
           :class="[
             'first-of-type:mt-2 rounded-md active:bg-primary-100',
-            { 'bg-primary-100 hover:bg-primary-100 active:bg-primary-100 font-medium active-category': category.id === selectedCategory.id},
+            // { 'bg-primary-100 hover:bg-primary-100 active:bg-primary-100 font-medium active-category': category.id === selectedCategory.id},
           ]"
         >
         
           <template #suffix>
             <SfIconCheck v-if="category.id === selectedCategory.id" size="sm" class="text-primary-700" />
           </template>
-          <span class="flex items-center">
+          <span class="fle">
             {{ category.name }}
-       
+            <ul v-if="category.subcategories" class="d-bloc">
+              <li v-for="(subcat, subIdx) in category.subcategories" :key="subcat.id" v-on:click="displayCategoryProducts(subcat.id, subcat.name)">
+                {{ subcat.name }}
+              </li>
+            </ul>
           </span>
         </SfListItem>
       </li>
@@ -84,7 +88,8 @@
 </section>
 
 </section>
-<nav class="flex justify-between items-end border-t border-neutral-200" role="navigation" aria-label="pagination">
+<!-- TODO: Fix pagination -->
+<!-- <nav class="flex justify-between items-end border-t border-neutral-200" role="navigation" aria-label="pagination">
     <SfButton
       size="lg"
       aria-label="Go to previous page"
@@ -206,7 +211,7 @@
         <SfIconChevronRight />
       </template>
     </SfButton>
-  </nav>
+  </nav> -->
     </div>
 
 
@@ -283,6 +288,7 @@ const displayCategoryProducts = async (id = 0, name = "") => {
   itemsCount.value = products.value.length;
   // currentPage.value = triggerProp.value++;
   console.log("itemsCount", itemsCount.value);
+  console.log("Subs", categories.value);
   // if (triggerProp.value > 1) {
     displayedProductsPerCategory();
     // window.location.reload();

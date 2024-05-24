@@ -1,5 +1,5 @@
 <template>
-  <section class="row">
+  <section class="row pb-0">
     <section class="col-6 px-5">
       <img :src="productData?.images[0]?.image" class="img-responsive" alt="">
     </section>
@@ -77,7 +77,7 @@
 
     </section>
   </section>
-  <section class="d-flex justify-content-center">
+  <section class="d-flex justify-content-center pt-0">
     <a href="/shop" class="text-center btn btn-outline-secondary">Back to Products</a>
   </section>
   </template>
@@ -131,7 +131,7 @@
    let versionPrice = ref(0);
    console.log(productData);
   let buyingEnabled = ref(false);
-   let prodVersions = productData.product_versions;
+   let prodVersions = productData?.product_versions;
     let productVersionOptions = ref(new Map());
     let productVersionOptions_temp = [];
     onMounted(() => {

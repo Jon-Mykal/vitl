@@ -6,6 +6,7 @@
           :src="prodImage"
           :alt="product.imageAlt"
           class="img-fluid pt-3 px-1"
+          :class="{'shower-img': isShowerEnclosure}"
         />
       </SfLink>
       <!-- <SfButton
@@ -24,7 +25,9 @@
         {{ product.description }}
       </p>
       <!-- <span class="block pb-2 font-bold typography-text-lg">${{ new Intl.NumberFormat('en-US').format(numeral(product.price).format('0.00'))}}</span> -->
-      <span class="block pb-2 font-bold typography-text-lg">${{ numeral(product.price).format('0,0.00')}}</span>
+      
+      <span v-if="prodHasVersions" class="block pb-2 font-bold typography-text-lg">Various versions. Click 'View'</span>
+      <span v-else class="block pb-2 font-bold typography-text-lg">${{ numeral(product.price).format('0,0.00')}}</span>
       <SfButton size="sm" class="bg-black">
        <!-- <template #prefix>
           <SfIconShoppingCart size="sm" />
@@ -52,9 +55,19 @@ import { RouterLink } from 'vue-router';
     product: Object
  })
  const prodImage = props.product.images.length ? props.product.images[0]['image'] : '';
- console.log(prodImage);
+ let prodHasVersions = false;
+ if (props.product.product_versions) {
+    if (props.product.product_versions.length > 0) {
+      prodHasVersions = true;
+    }
+ }
+ const isShowerEnclosure = props.product.category.filter(c => c.name == "Shower Enclosures").length > 0;
+ console.log();
+ console.log(prodImage, prodHasVersions);
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="css" scoped>
+.shower-img {
+  height: 25rem !important;
+}
 </style>

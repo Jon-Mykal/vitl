@@ -134,7 +134,7 @@ onMounted(async () => {
               <h4>Balcony</h4> </a
             ><!-- End tab nav item -->
           </li>
-          <li class="nav-item d-none" role="presentation">
+          <li class="nav-item" role="presentation">
             <a
               class="nav-link"
               data-bs-toggle="tab"
@@ -292,72 +292,82 @@ onMounted(async () => {
           </div>
           <!-- End Breakfast Menu Content -->
 
-          <!-- <div class="tab-pane fade" id="menu-shower" role="tabpanel">
+          <div class="tab-pane fade" id="menu-shower" role="tabpanel">
             <div class="tab-header text-center">
               <h3>Shower</h3>
             </div>
 
             <div class="row gy-5">
               <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-1.png" class="glightbox">
-                  <img
-                    class="img-fluid"
-                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/393286/d1dcd5fa-c790-4d29-993a-5f184e0d2a33.png"
-                    alt=""
-                  />
-                </a>
-                <h4>Shower Mixer</h4>
-                <p class="price">$30,225.00</p>
                 <RouterLink
-                  class="btn-book-a-table px-4"
-                  href="https://virginsintltrading.fygaroshops.com/products/ab4cf01d-844e-40c0-8d95-d864b3ddbf4d/"
-                  >Buy</RouterLink
+                  :to="{name: 'ProductDetails', query: {id: '139746e7-a7e2-4db3-81e6-15c72439b174'} }" 
+                  class="glightbox"
                 >
-              </div>
-
-              <div class="col-lg-4 menu-item">
-                <RouterLink href="assets/img/menu/menu-item-1.png" class="glightbox">
                   <img
-                    class="img-fluid"
-                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+                    class="img-fluid shower-img mx-auto d-block pb-3"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/367675/fdb6e477-5103-410c-895a-9b64e272b48c.jpg"
                     alt=""
                   />
                 </RouterLink>
-                <h4>Aut Luia</h4>
-                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
-                <p class="price">$14.95</p>
+                <h4>L-670 SINGLE SLIDING SHOWER</h4>
+                <p class="price">Click 'Buy' to see versions</p>
                 <RouterLink
                   class="btn-book-a-table px-4"
-                  href="https://virginsintltrading.fygaroshops.com/products/3fa19472-76a7-49aa-9b36-dd843baf20d0/"
+                  :to="{name: 'ProductDetails', query: {id: '139746e7-a7e2-4db3-81e6-15c72439b174'} }" 
                   >Buy</RouterLink
                 >
               </div>
-           
+              <!-- Menu Item -->
 
               <div class="col-lg-4 menu-item">
-                <RouterLink href="assets/img/menu/menu-item-1.png" class="glightbox">
+                <RouterLink
+                  :to="{name: 'ProductDetails', query: {id: '4a6d25ee-1b7b-4e38-9d11-6a2515eca9d0'} }" 
+                  class="glightbox"
+                >
                   <img
-                    class="img-fluid"
-                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/371742/81160760-cded-4954-bfeb-9494b1b5ae61.jpg"
+                    class="img-fluid shower-img mx-auto d-block pb-3"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/368648/95b401e3-1268-4227-90cd-8324968e4d21.jpg"
                     alt=""
                   />
                 </RouterLink>
-                <h4>Est Eligendi</h4>
-                <p class="ingredients">Lorem, deren, trataro, filede, nerada</p>
-                <p class="price">$8.95</p>
+                <h4>L-101 DOUBLE SLIDING SHOWER</h4>
+
+                <p class="price">Click 'Buy' to see versions</p>
                 <RouterLink
                   class="btn-book-a-table px-4"
-                  href="https://virginsintltrading.fygaroshops.com/products/3fa19472-76a7-49aa-9b36-dd843baf20d0/"
+                  :to="{name: 'ProductDetails', query: {id: '4a6d25ee-1b7b-4e38-9d11-6a2515eca9d0'} }" 
                   >Buy</RouterLink
                 >
               </div>
+              <!-- Menu Item -->
+
+              <div class="col-lg-4 menu-item">
+                <RouterLink
+                  :to="{name: 'ProductDetails', query: {id: '318e3bf2-9b1b-42fc-8cc6-b2fd2e8acc84'} }" 
+                  class="glightbox"
+                >
+                  <img
+                    class="img-fluid shower-img mx-auto d-block pb-3"
+                    src="https://fygaro-subscribers.s3.amazonaws.com/65591e0e-ee6c-4aeb-9f77-8a260c61dae0/products/389249/9ea09b6f-2e09-4bb9-9206-8fb7b782f5f2.jpg"
+                    alt=""
+                  />
+                </RouterLink>
+                <h4>L-104 SINGLE SLIDING SHOWER</h4>
+                <p class="price">Click 'Buy' to see versions</p>
+                <RouterLink
+                  class="btn-book-a-table px-4"
+                  :to="{name: 'ProductDetails', query: {id: '318e3bf2-9b1b-42fc-8cc6-b2fd2e8acc84'} }" 
+                  >Buy</RouterLink
+                >
+              </div>
+              <!-- Menu Item -->
             </div>
-          </div> -->
+          </div>
           <!-- End Starter Menu Content -->
         </div>
       </div>
     </section>
-    <section id="testimonials" class="testimonials section-bg">
+    <!-- <section id="testimonials" class="testimonials section-bg">
       <div class="container aos-init aos-animate" data-aos="fade-up">
         <div class="section-header">
           <p>What Are They <span class="fw-bold">Saying About Us</span></p>
@@ -405,7 +415,6 @@ onMounted(async () => {
                     </div>
                   </div>
                   <div class="col-lg-2 text-center">
-                    <!-- <img src="assets/img/testimonials/testimonials-2.jpg" class="img-fluid testimonial-img" alt=""> -->
                   </div>
                 </div>
               </div>
@@ -440,7 +449,7 @@ onMounted(async () => {
                     </div>
                   </div>
                   <div class="col-lg-2 text-center">
-                    <!-- <img src="assets/img/testimonials/testimonials-3.jpg" class="img-fluid testimonial-img" alt=""> -->
+                    
                   </div>
                 </div>
               </div>
@@ -475,7 +484,7 @@ onMounted(async () => {
                     </div>
                   </div>
                   <div class="col-lg-2 text-center">
-                    <!-- <img src="assets/img/testimonials/testimonials-4.jpg" class="img-fluid testimonial-img" alt=""> -->
+                    
                   </div>
                 </div>
               </div>
@@ -511,12 +520,12 @@ onMounted(async () => {
                     </div>
                   </div>
                   <div class="col-lg-2 text-center">
-                    <!-- <img src="assets/img/testimonials/testimonials-1.jpg" class="img-fluid testimonial-img" alt=""> -->
+                    
                   </div>
                 </div>
               </div>
             </div>
-            <!-- End testimonial item -->
+         
 
             <div
               class="swiper-slide"
@@ -548,12 +557,12 @@ onMounted(async () => {
                     </div>
                   </div>
                   <div class="col-lg-2 text-center">
-                    <!-- <img src="assets/img/testimonials/testimonials-2.jpg" class="img-fluid testimonial-img" alt=""> -->
+                    
                   </div>
                 </div>
               </div>
             </div>
-            <!-- End testimonial item -->
+            
 
             <div
               class="swiper-slide"
@@ -585,12 +594,12 @@ onMounted(async () => {
                     </div>
                   </div>
                   <div class="col-lg-2 text-center">
-                    <!-- <img src="assets/img/testimonials/testimonials-3.jpg" class="img-fluid testimonial-img" alt=""> -->
+                    
                   </div>
                 </div>
               </div>
             </div>
-            <!-- End testimonial item -->
+            
           </div>
           <div
             class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
@@ -628,7 +637,7 @@ onMounted(async () => {
           ></span>
         </div>
       </div>
-    </section>
+    </section> -->
     <section id="contact" class="">
       <div class="container aos-init aos-animate" data-aos="fade-up">
         <div class="section-header">
@@ -648,5 +657,9 @@ onMounted(async () => {
 <style lang="css" scoped>
 .menu {
   background-color: #f8f8f8;
+}
+
+.shower-img {
+  height: 30rem !important;
 }
 </style>

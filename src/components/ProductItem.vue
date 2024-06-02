@@ -20,7 +20,7 @@
       </SfButton> -->
     </div>
     <div class="p-4 border-t border-neutral-200">
-      <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: product.external_id} }" variant="secondary" class="no-underline"> {{ product.name.toUpperCase()}} </RouterLink>
+      <RouterLink :to="{name: 'ProductDetails', query: {id: product.external_id} }" variant="secondary" class="no-underline"> {{ product.name.toUpperCase()}} </RouterLink>
       <p class="block py-2 font-normal leading-5 typography-text-sm text-neutral-700">
         {{ product.description }}
       </p>
@@ -32,7 +32,7 @@
        <!-- <template #prefix>
           <SfIconShoppingCart size="sm" />
         </template>> -->
-        <RouterLink :to="{name: 'ProductDetails', params: {product}, query: {id: product.external_id} }" variant="secondary" class="no-underline"> View </RouterLink>
+        <RouterLink :to="{name: 'ProductDetails', query: {id: product.external_id} }" variant="secondary" class="no-underline"> View </RouterLink>
       </SfButton>
     </div>
   </div>
@@ -54,16 +54,15 @@ import { RouterLink } from 'vue-router';
  const props = defineProps({
     product: Object
  })
- const prodImage = props.product.images.length ? props.product.images[0]['image'] : '';
+ const prodImage = props.product?.images?.length ? props.product.images[0]['image'] : '';
  let prodHasVersions = false;
  if (props.product.product_versions) {
     if (props.product.product_versions.length > 0) {
       prodHasVersions = true;
     }
  }
- const isShowerEnclosure = props.product.category.filter(c => c.name == "Shower Enclosures").length > 0;
- console.log();
- console.log(prodImage, prodHasVersions);
+ const isShowerEnclosure = props.product?.category?.filter(c => c.name == "Shower Enclosures").length > 0;
+//  console.log(prodImage, prodHasVersions);
 </script>
 
 <style lang="css" scoped>

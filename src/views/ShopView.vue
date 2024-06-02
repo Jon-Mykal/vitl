@@ -4,41 +4,61 @@
     <div class="container">
       <section class="row">
         <section class="col-2">
-      <SfAccordionItem v-model="open" class="w-full md:max-w-[376px]">
-    <template #summary>
-      <div class="flex justify-between p-2 mb-2">
-        <p class="font-medium">Categories</p>
-        <SfIconChevronLeft :class="open ? 'rotate-90' : '-rotate-90'" />
-      </div>
-    </template>
-    <ul class="mt-2 mb-6">
-      <li v-for="(category, index) in categories" :key="category.id" v-on:click="displayCategoryProducts(category.id, category.name)">
-        <SfListItem
-          size="sm"
-          tag="a"
-          :href="category.link"
-          :class="[
-            'first-of-type:mt-2 rounded-md active:bg-primary-100',
-            { 'bg-primary-100 hover:bg-primary-100 active:bg-primary-100 font-medium active-category': category.id === selectedCategory.id},
-          ]"
-        >
-        
-          <template #suffix>
-            <SfIconCheck v-if="category.id === selectedCategory.id" size="sm" class="text-primary-700" />
-          </template>
-          <span class="flex items-center">
-            {{ category.name }}
-       
-          </span>
-        </SfListItem>
-      </li>
-    </ul>
-  </SfAccordionItem>
-</section>
-<section class="col-9 mx-5-mt-14">
-  <section class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8-mt-14">
-    <ProductItem v-for="product in displayedProducts" :key="product.external_id" :product="product" />
-  <!-- <div class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px]" v-for="product in products" :key="product.id">
+          <SfAccordionItem v-model="open" class="w-full md:max-w-[376px]">
+            <template #summary>
+              <div class="flex justify-between p-2 mb-2">
+                <p class="font-medium">Categories</p>
+                <SfIconChevronLeft :class="open ? 'rotate-90' : '-rotate-90'" />
+              </div>
+            </template>
+            <ul class="mt-2 mb-6">
+              <span v-for="(category, index) in categories" :key="category.id"
+                v-on:click="displayCategoryProducts(category.id, category.name)">
+
+                <li>
+                  <SfListItem size="sm" tag="a" class="bg-primary-100 font-medium category" :href="category.link"
+                    :class="[
+
+                      //{ 'bg-primary-100 hover:bg-primary-100 active:bg-primary-100 font-medium': category.id === selectedCategory.id},
+                    ]">
+                    <template #suffix>
+                      <SfIconCheck v-if="category.id === selectedCategory.id" size="sm" class="text-primary-700" />
+                    </template>
+
+                    <span class="flex items-center">
+                      {{ category.name }}
+                      <SfAccordionItem v-model="catOpen" v-if="category.subcategories.length > 0"
+                        class="w-full md:max-w-[376px]">
+                        <template #catSummary>
+                          <SfIconChevronLeft :class="catOpen ? 'rotate-90' : '-rotate-90'" />
+                        </template>
+
+                      </SfAccordionItem>
+                    </span>
+
+                  </SfListItem>
+                </li>
+
+                <ul
+                  v-if="((category.id === selectedCategory.id)/* && category.subcategories || category.subcategories.length > 0*/)"
+                  class="subcategory-list">
+
+                  <SfListItem v-for="(subcat, subCatIdx) in category.subcategories" :key="subcat.id"
+                    v-on:click="displayCategoryProducts(subcat.category_id, category.name, true, subcat.id, subcat.name)">
+                    {{ subcat.name }}
+                    <template #suffix>
+                      <SfIconCheck v-if="selectedSubCategory.id === subcat.id" size="sm" class="text-primary-700" />
+                    </template>
+                  </SfListItem>
+                </ul>
+              </span>
+            </ul>
+          </SfAccordionItem>
+        </section>
+        <section class="col-9 mx-5-mt-14">
+          <section class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8-mt-14">
+            <ProductItem v-for="product in displayedProducts" :key="product.external_id" :product="product" />
+            <!-- <div class="border border-neutral-200 rounded-md hover:shadow-lg max-w-[300px]" v-for="product in products" :key="product.id">
     <div class="relative">
       <SfLink href="#" class="block">
         <img
@@ -80,12 +100,12 @@
       </SfButton>
     </div>
   </div> -->
-  </section>
-</section>
+          </section>
+        </section>
 
-</section>
-<!-- TODO: Fix pagination -->
-<!-- <nav class="flex justify-between items-end border-t border-neutral-200" role="navigation" aria-label="pagination">
+      </section>
+      <!-- TODO: Fix pagination -->
+      <!-- <nav class="flex justify-between items-end border-t border-neutral-200" role="navigation" aria-label="pagination">
     <SfButton
       size="lg"
       aria-label="Go to previous page"
@@ -227,7 +247,7 @@
       <RouterLink class="return-home btn btn-link rounded text-decoration-none fs-5" :to="{ name: 'home' }">Return to home
       </RouterLink> -->
 
-    </section>
+  </section>
 </template>
 
 
@@ -252,26 +272,42 @@ import {
 } from '@storefront-ui/vue';
 
 import axios from "axios";
-import orderBy  from 'lodash/orderBy';
+import orderBy from 'lodash/orderBy';
 
 let products = ref([]);
+let subProducts = ref([]);
 let displayedProductsSource = ref([]);
 let productsSource = ref([]);
 const categories = ref([]);
 const subcategories = ref([]);
 let categoryTrack = ref({});
 let selectedCategory = ref({});
+let selectedSubCategory = ref({});
+
 // let selectedCategory = ref({});
 
 let itemsCount = ref(0);
-let triggerProp =  ref(sessionStorage.getItem("triggerProp") || 0);
+let triggerProp = ref(sessionStorage.getItem("triggerProp") || 0);
 const componentInstance = getCurrentInstance();
-const displayCategoryProducts = async (id = 0, name = "") => {
+const displayCategoryProducts = async (id = 0, name = "", hasSubCategories = false, subcatId = 0, subcatName = "") => {
   displayedProducts.value = [];
   products.value = productsSource.value;
-  products.value = products.value.filter(p => { 
+  products.value = products.value.filter(p => {
     return p.category.filter(c => c.id === id).length > 0;
   });
+  if (hasSubCategories) {
+    products.value.forEach((prod, idx) => {
+      let subProd = prod.subcategories.filter(sc => sc.id == subcatId);
+      if (subProd.length > 0) {
+      subProducts.value.push(prod);
+        console.log("Found", subProducts.value, prod);
+      }
+    });
+    products.value = subProducts.value;
+    console.log(subcatName, "Works", subProducts.value);
+  }
+
+
   sessionStorage.setItem("products", JSON.stringify(products.value));
   sessionStorage.setItem("itemCount", products.value.length);
   // if (id == 0) {
@@ -279,64 +315,63 @@ const displayCategoryProducts = async (id = 0, name = "") => {
   //   name = 'Aluminium';
   // }
   sessionStorage.setItem("selectedCategory", JSON.stringify({ id, name }));
+  sessionStorage.setItem("selectedSubCategory", JSON.stringify({ subcatId, subcatName }));
   selectedCategory.value = { id, name };
   displayedProductsSource.value = products.value;
   itemsCount.value = products.value.length;
   // currentPage.value = triggerProp.value++;
   console.log("itemsCount", itemsCount.value);
   // if (triggerProp.value > 1) {
-    displayedProductsPerCategory();
-    // window.location.reload();
+  displayedProductsPerCategory();
+  // window.location.reload();
   // }
-  
+
 };
+
 
 
 watch(selectedCategory, () => {
   console.log("Changed");
 })
 onBeforeMount(async () => {
-// let aluminiumCat = cats.filter(c => c.name == "Aluminium")[0];
-// selectedCategory.value = { id: 10734, name: 'Aluminium'};
-    // tri
-   
-    if (triggerProp.value === 0) {
-      triggerProp.value++;
-      sessionStorage.setItem('triggerProp', triggerProp.value)
-      displayCategoryProducts(10734, 'Aluminium');  
-    }
-    else {
+  // let aluminiumCat = cats.filter(c => c.name == "Aluminium")[0];
+  // selectedCategory.value = { id: 10734, name: 'Aluminium'};
+  // tri
 
-    }
+  if (triggerProp.value === 0) {
+    triggerProp.value++;
+    sessionStorage.setItem('triggerProp', triggerProp.value)
+    displayCategoryProducts(10734, 'Aluminium');
+  }
+  else {
 
-    // (triggerProp.value === 1) {
-    //   console.log(selectedCategory.value);
-    // }
- 
+  }
+
+  // (triggerProp.value === 1) {
+  //   console.log(selectedCategory.value);
+  // }
+
 });
 
 
 onMounted(async () => {
   let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
 
-    categories.value = res.data["categories"];
-    products.value = res.data["products"];
-    products.value = orderBy(products.value.filter(p => p["show_in_website"]), ['name'], ['asc']);
-    productsSource.value = products.value;
-    
-// let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
-    sessionStorage.setItem("products", JSON.stringify(products.value));
-    sessionStorage.setItem("productsSource", JSON.stringify(products.value));
-    sessionStorage.setItem("categories", JSON.stringify(categories.value));
-    
-    // sessionStorage.setItem("itemCount", res.data["productsCount"]);
-    selectedCategory.value = JSON.parse(sessionStorage.getItem("selectedCategory"));
-  
-    await nextTick();
-    displayCategoryProducts(selectedCategory.value.id, selectedCategory.value.name);
-  
-    
-  
+  categories.value = res.data["categories"];
+  products.value = res.data["products"];
+  products.value = orderBy(products.value.filter(p => p["show_in_website"]), ['name'], ['asc']);
+  productsSource.value = products.value;
+
+  // let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
+  sessionStorage.setItem("products", JSON.stringify(products.value));
+  sessionStorage.setItem("productsSource", JSON.stringify(products.value));
+  sessionStorage.setItem("categories", JSON.stringify(categories.value));
+
+  // sessionStorage.setItem("itemCount", res.data["productsCount"]);
+  selectedCategory.value = JSON.parse(sessionStorage.getItem("selectedCategory"));
+
+  await nextTick();
+  displayCategoryProducts(selectedCategory.value.id, selectedCategory.value.name);
 });
 
 const fetchData = () => {
@@ -344,11 +379,11 @@ const fetchData = () => {
 };
 
 const pageCountChange = () => {
-console.log("Page Count");
+  console.log("Page Count");
 };
 
 const { totalPages, pages, selectedPage, startPage, endPage, next, prev, setPage, maxVisiblePages } = usePagination({
-  totalItems:  sessionStorage.getItem("itemCount"),
+  totalItems: sessionStorage.getItem("itemCount"),
   currentPage: 1,
   pageSize: 12
 });
@@ -375,8 +410,8 @@ const displayedProductsPerCategory = () => {
     capturedProducts = JSON.parse(sessionStorage.getItem("products"));
     console.log(capturedProducts);
   }
-  
-  
+
+
   // console.log(capturedProducts);
   // return capturedProducts.sort((a, b) => {
   // const titleA = a['name'].toUpperCase(); // ignore upper and lowercase
@@ -384,7 +419,7 @@ const displayedProductsPerCategory = () => {
   // console.log(titleA, titleB);
   // return titleA.localeCompare(titleB);})
   displayedProducts.value = capturedProducts/*.slice(startIndex, endIndex);*/
-  
+
 };
 const displayedProductsV2 = ref(async () => {
   const startIndex = (selectedPage.value * 12) - 12;
@@ -406,9 +441,9 @@ const displayedProductsV2 = ref(async () => {
     capturedProducts = JSON.parse(sessionStorage.getItem("products"));
     console.log(capturedProducts);
   }
-  
-  
-  console.log(capturedProducts);
+
+
+  // console.log(capturedProducts)
   // return capturedProducts.sort((a, b) => {
   // const titleA = a['name'].toUpperCase(); // ignore upper and lowercase
   // const titleB = b['name'].toUpperCase(); // ignore upper and lowercase
@@ -418,6 +453,7 @@ const displayedProductsV2 = ref(async () => {
 });
 
 const open = ref(true);
+const catOpen = ref(false);
 
 </script>
 
@@ -426,6 +462,7 @@ const open = ref(true);
   color: #ce1212;
   ;
 }
+
 .active-category {
   background-color: #ce1212;
   color: white;

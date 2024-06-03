@@ -45,7 +45,7 @@
 
                   <SfListItem v-for="(subcat, subCatIdx) in category.subcategories" :key="subcat.id" class="d-flex"
                     v-on:click="displayCategoryProducts(subcat.category_id, category.name, true, subcat.id, subcat.name, category.id)">
-                    <span :class="{'active-subcategory': selectedSubCategory.subcatId == subcat.id}">{{ subcat.name }}</span>
+                    <span :class="{'active-subcategory': selectedSubCategory?.subcatId == subcat.id}">{{ subcat.name }}</span>
                     <!-- <template #suffix>
                       <SfIconCheck v-if="selectedSubCategory.subcatId === subcat.id" size="sm" class="text-primary-700" />
                     </template> -->
@@ -306,10 +306,10 @@ const displayCategoryProducts = async (id = 0, name = "", hasSubCategories = fal
     console.log(subcatName, "Works", subProducts.value);
   }
   else if (!hasSubCategories && selectedSubCategory.value?.subcatId > 0 && selectedSubCategory.value?.catId == id) {
-    sessionStorage.setItem("selectedSubCategory", JSON.stringify({ subcatId: selectedSubCategory.value.subcatId, subcatName: selectedSubCategory.value.subcatName, catId: id}));
+    sessionStorage.setItem("selectedSubCategory", JSON.stringify({ subcatId: selectedSubCategory.value?.subcatId, subcatName: selectedSubCategory.value?.subcatName, catId: id}));
     subProducts.value = [];
     products.value.forEach((prod, idx) => {
-      let subProd = prod.subcategories.filter(sc => sc.id == selectedSubCategory.value.subcatId);
+      let subProd = prod.subcategories.filter(sc => sc.id == selectedSubCategory.value?.subcatId);
       if (subProd.length > 0) {
         subProducts.value.push(prod);
         console.log("Found", subProducts.value, prod);

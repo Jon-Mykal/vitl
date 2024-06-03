@@ -292,10 +292,9 @@ const componentInstance = getCurrentInstance();
 const displayCategoryProducts = async (id = 0, name = "", hasSubCategories = false, subcatId = 0, subcatName = "") => {
   displayedProducts.value = [];
   products.value = productsSource.value;
-  products.value = products.value.filter(p => {
-    return p.category.filter(c => c.id === id).length > 0;
-  });
   if (hasSubCategories) {
+    sessionStorage.setItem("selectedSubCategory", JSON.stringify({ subcatId, subcatName }));
+    subProducts.value = [];
     products.value.forEach((prod, idx) => {
       let subProd = prod.subcategories.filter(sc => sc.id == subcatId);
       if (subProd.length > 0) {
@@ -306,6 +305,24 @@ const displayCategoryProducts = async (id = 0, name = "", hasSubCategories = fal
     products.value = subProducts.value;
     console.log(subcatName, "Works", subProducts.value);
   }
+  else if (!hasSubCategories && selectedSubCategory.value.subcatId > 0) {
+    sessionStorage.setItem("selectedSubCategory", JSON.stringify({ subcatId, subcatName }));
+    subProducts.value = [];
+    products.value.forEach((prod, idx) => {
+      let subProd = prod.subcategories.filter(sc => sc.id == selectedSubCategory.value.subcatId);
+      if (subProd.length > 0) {
+      subProducts.value.push(prod);
+        console.log("Found", subProducts.value, prod);
+      }
+    });
+    products.value = subProducts.value;
+    console.log(subcatName, "Works", subProducts.value);
+  }
+  else {
+    products.value = products.value.filter(p => {
+    return p.category.filter(c => c.id === id).length > 0;
+  });
+  }
 
 
   sessionStorage.setItem("products", JSON.stringify(products.value));
@@ -315,8 +332,9 @@ const displayCategoryProducts = async (id = 0, name = "", hasSubCategories = fal
   //   name = 'Aluminium';
   // }
   sessionStorage.setItem("selectedCategory", JSON.stringify({ id, name }));
-  sessionStorage.setItem("selectedSubCategory", JSON.stringify({ subcatId, subcatName }));
+
   selectedCategory.value = { id, name };
+  selectedSubCategory.value = JSON.parse(sessionStorage.getItem("selectedSubCategory"));
   displayedProductsSource.value = products.value;
   itemsCount.value = products.value.length;
   // currentPage.value = triggerProp.value++;
@@ -408,7 +426,7 @@ const displayedProductsPerCategory = () => {
   }
   else {
     capturedProducts = JSON.parse(sessionStorage.getItem("products"));
-    console.log(capturedProducts);
+    // console.log(capturedProducts);
   }
 
 

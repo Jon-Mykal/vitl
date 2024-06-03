@@ -18,8 +18,8 @@
                 <li>
                   <SfListItem size="sm" tag="a" class="bg-primary-100 font-medium category" :href="category.link"
                     :class="[
-
-                      //{ 'bg-primary-100 hover:bg-primary-100 active:bg-primary-100 font-medium': category.id === selectedCategory.id},
+                      'first-of-type:mt-2 rounded-md active:bg-primary-100',
+                      { 'bg-primary-100 hover:bg-primary-100 active:bg-primary-100 font-medium active-category': category.id === selectedCategory.id },
                     ]">
                     <template #suffix>
                       <SfIconCheck v-if="category.id === selectedCategory.id" size="sm" class="text-primary-700" />
@@ -43,11 +43,11 @@
                   v-if="((category.id === selectedCategory.id)/* && category.subcategories || category.subcategories.length > 0*/)"
                   class="subcategory-list">
 
-                  <SfListItem v-for="(subcat, subCatIdx) in category.subcategories" :key="subcat.id"
+                  <SfListItem v-for="(subcat, subCatIdx) in category.subcategories" :key="subcat.id" :class="{'active-category': selectedSubCategory.subcatId == subcat.id}"
                     v-on:click="displayCategoryProducts(subcat.category_id, category.name, true, subcat.id, subcat.name)">
                     {{ subcat.name }}
                     <template #suffix>
-                      <SfIconCheck v-if="selectedSubCategory.id === subcat.id" size="sm" class="text-primary-700" />
+                      <SfIconCheck v-if="selectedSubCategory.subcatId === subcat.id" size="sm" class="text-primary-700" />
                     </template>
                   </SfListItem>
                 </ul>
@@ -298,7 +298,7 @@ const displayCategoryProducts = async (id = 0, name = "", hasSubCategories = fal
     products.value.forEach((prod, idx) => {
       let subProd = prod.subcategories.filter(sc => sc.id == subcatId);
       if (subProd.length > 0) {
-      subProducts.value.push(prod);
+        subProducts.value.push(prod);
         console.log("Found", subProducts.value, prod);
       }
     });
@@ -311,7 +311,7 @@ const displayCategoryProducts = async (id = 0, name = "", hasSubCategories = fal
     products.value.forEach((prod, idx) => {
       let subProd = prod.subcategories.filter(sc => sc.id == selectedSubCategory.value.subcatId);
       if (subProd.length > 0) {
-      subProducts.value.push(prod);
+        subProducts.value.push(prod);
         console.log("Found", subProducts.value, prod);
       }
     });
@@ -320,8 +320,8 @@ const displayCategoryProducts = async (id = 0, name = "", hasSubCategories = fal
   }
   else {
     products.value = products.value.filter(p => {
-    return p.category.filter(c => c.id === id).length > 0;
-  });
+      return p.category.filter(c => c.id === id).length > 0;
+    });
   }
 
 

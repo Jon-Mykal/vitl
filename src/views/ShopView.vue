@@ -41,14 +41,14 @@
 
                 <ul
                   v-if="((category.id === selectedCategory.id)/* && category.subcategories || category.subcategories.length > 0*/)"
-                  class="subcategory-list">
+                  class="subcategory-list pl-3">
 
-                  <SfListItem v-for="(subcat, subCatIdx) in category.subcategories" :key="subcat.id" :class="{'active-category': selectedSubCategory.subcatId == subcat.id}"
-                    v-on:click="displayCategoryProducts(subcat.category_id, category.name, true, subcat.id, subcat.name)">
-                    {{ subcat.name }}
-                    <template #suffix>
+                  <SfListItem v-for="(subcat, subCatIdx) in category.subcategories" :key="subcat.id" class="d-flex"
+                    v-on:click="displayCategoryProducts(subcat.category_id, category.name, true, subcat.id, subcat.name, category.id)">
+                    <span :class="{'active-subcategory': selectedSubCategory.subcatId == subcat.id}">{{ subcat.name }}</span>
+                    <!-- <template #suffix>
                       <SfIconCheck v-if="selectedSubCategory.subcatId === subcat.id" size="sm" class="text-primary-700" />
-                    </template>
+                    </template> -->
                   </SfListItem>
                 </ul>
               </span>
@@ -289,11 +289,11 @@ let selectedSubCategory = ref({});
 let itemsCount = ref(0);
 let triggerProp = ref(sessionStorage.getItem("triggerProp") || 0);
 const componentInstance = getCurrentInstance();
-const displayCategoryProducts = async (id = 0, name = "", hasSubCategories = false, subcatId = 0, subcatName = "") => {
+const displayCategoryProducts = async (id = 0, name = "", hasSubCategories = false, subcatId = 0, subcatName = "", subcatCatId = 0) => {
   displayedProducts.value = [];
   products.value = productsSource.value;
   if (hasSubCategories) {
-    sessionStorage.setItem("selectedSubCategory", JSON.stringify({ subcatId, subcatName }));
+    sessionStorage.setItem("selectedSubCategory", JSON.stringify({ subcatId, subcatName, catId: id }));
     subProducts.value = [];
     products.value.forEach((prod, idx) => {
       let subProd = prod.subcategories.filter(sc => sc.id == subcatId);
@@ -305,8 +305,8 @@ const displayCategoryProducts = async (id = 0, name = "", hasSubCategories = fal
     products.value = subProducts.value;
     console.log(subcatName, "Works", subProducts.value);
   }
-  else if (!hasSubCategories && selectedSubCategory.value.subcatId > 0) {
-    sessionStorage.setItem("selectedSubCategory", JSON.stringify({ subcatId, subcatName }));
+  else if (!hasSubCategories && selectedSubCategory.value.subcatId > 0 && selectedSubCategory.value.catId == id) {
+    sessionStorage.setItem("selectedSubCategory", JSON.stringify({ subcatId: selectedSubCategory.value.subcatId, subcatName: selectedSubCategory.value.subcatName, catId: id}));
     subProducts.value = [];
     products.value.forEach((prod, idx) => {
       let subProd = prod.subcategories.filter(sc => sc.id == selectedSubCategory.value.subcatId);
@@ -387,9 +387,16 @@ onMounted(async () => {
 
   // sessionStorage.setItem("itemCount", res.data["productsCount"]);
   selectedCategory.value = JSON.parse(sessionStorage.getItem("selectedCategory"));
+  // selectedSubCategory.value = JSON.parse(sessionStorage.getItem("selectedSubCategory"));
 
   await nextTick();
-  displayCategoryProducts(selectedCategory.value.id, selectedCategory.value.name);
+  // if (selectedSubCategory.value.subcatId > 0) {
+  //   displayCategoryProducts(selectedCategory.value.id, selectedCategory.value.name, true, selectedSubCategory.value.subcatId, selectedSubCategory.value.subcatName);
+  // }
+  // else {
+    displayCategoryProducts(selectedCategory.value.id, selectedCategory.value.name);
+  // }
+  
 });
 
 const fetchData = () => {
@@ -484,5 +491,9 @@ const catOpen = ref(false);
 .active-category {
   background-color: #ce1212;
   color: white;
+}
+
+.active-subcategory {
+  color: #ce1212;
 }
 </style>

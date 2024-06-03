@@ -305,7 +305,7 @@ const displayCategoryProducts = async (id = 0, name = "", hasSubCategories = fal
     products.value = subProducts.value;
     console.log(subcatName, "Works", subProducts.value);
   }
-  else if (!hasSubCategories && selectedSubCategory.value.subcatId > 0 && selectedSubCategory.value.catId == id) {
+  else if (!hasSubCategories && selectedSubCategory.value?.subcatId > 0 && selectedSubCategory.value?.catId == id) {
     sessionStorage.setItem("selectedSubCategory", JSON.stringify({ subcatId: selectedSubCategory.value.subcatId, subcatName: selectedSubCategory.value.subcatName, catId: id}));
     subProducts.value = [];
     products.value.forEach((prod, idx) => {

@@ -72,7 +72,7 @@ onMounted(async () => {
         <div class="section-header">
           <p>
             Welcome to
-            <span class="fw-bold">Virgin’s International Trading</span>
+            <span class="fw-bold">Virgin’s International Trading Limited</span>
           </p>
         </div>
 

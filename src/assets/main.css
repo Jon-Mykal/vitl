@@ -286,8 +286,8 @@ section {
   color: var(--color-primary);
 }
 
- .btn-book-a-table,
- .btn-book-a-table:focus {
+ a.btn-book-a-table,
+ a.btn-book-a-table:focus {
   font-size: 14px;
   color: #fff;
   background: var(--color-primary);
@@ -297,10 +297,28 @@ section {
   transition: 0.3s;
 }
 
- .btn-book-a-table:hover,
- .btn-book-a-table:focus:hover {
+  a.btn-book-a-table:hover,
+  a.btn-book-a-table:focus:hover {
   color: #fff;
   background: rgba(206, 18, 18, 0.8);
+}
+
+
+#shopLink a.btn-book-a-table,
+#shopLink a.btn-book-a-table:focus {
+ font-size: 14px;
+ color: #fff;
+ background: var(--color-primary);
+ padding: 8px 20px;
+ /* margin-left: 30px; */
+ border-radius: 50px;
+ transition: 0.3s;
+}
+
+ #shopLink a.btn-book-a-table:hover,
+ #shopLink a.btn-book-a-table:focus:hover {
+ color: #fff;
+ background: rgba(206, 18, 18, 0.8);
 }
 
 section {
@@ -354,7 +372,20 @@ section {
     margin-left: 5px;
   }
 
-  .navbar > ul > li > a:before {
+  .navbar > ul > li  > a:before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: var(--color-primary);
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .navbar > ul > li#shopLink  > a:before{
     content: "";
     position: absolute;
     width: 100%;
@@ -368,7 +399,7 @@ section {
   }
 
   .navbar a:hover:before,
-  .navbar li:hover > a:before,
+  .navbar li:not(#shopLink):hover > a:before,
   .navbar .router-link-active.router-link-exact-active:before {
     visibility: visible;
     width: 100%;

@@ -24,13 +24,13 @@
             <li>
               <RouterLink :to="{ name: 'contact' }">Contact Us</RouterLink>
             </li>
-            <li>
-              <!-- <RouterLink :to="{ name: 'shop' }">Shop</RouterLink> -->
+            <li id="shopLink">
+              <RouterLink :to="{ name: 'shop' }" class="btn-book-a-table">Products</RouterLink>
             </li>
           </ul>
         </nav>
         <!-- .navbar -->
-        <RouterLink :to="{ name: 'shop' }" class="btn-book-a-table">Our Shop</RouterLink>
+        <section></section>
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       </div>

@@ -145,11 +145,11 @@
                   />
                 </RouterLink>
                 <h4>3/4 Round - 21FT</h4>
-                <p class="price">J$1,114.12</p>
+                <!-- <p class="price">J$1,114.12</p>
                 <RouterLink
                   class="btn-book-a-table px-4"
                   :to="{name: 'ProductDetails', query: {id: '45fbd29d-ee90-4d07-a7cd-94d10fbe452d'} }"
-                  >Buy</RouterLink>
+                  >Buy</RouterLink> -->
               </div>
               <!-- Menu Item -->
 
@@ -164,10 +164,10 @@
                   />
                 </RouterLink>
                 <h4>Aluminium Shower Towel Bar 32"</h4>
-                <p class="price">J$363.00</p>
+                <!-- <p class="price">J$363.00</p>
                 <RouterLink :to="{name: 'ProductDetails', query: {id: '3fa19472-76a7-49aa-9b36-dd843baf20d0'} }" 
                   class="btn-book-a-table px-4"
-                  >Buy</RouterLink>
+                  >Buy</RouterLink> -->
               </div>
               <!-- Menu Item -->
 
@@ -182,10 +182,10 @@
                   />
                 </RouterLink>
                 <h4 class="text-capitalize">Fixed Louvre Frame - 21FT</h4>
-                <p class="price">J$3,458.12</p>
+                <!-- <p class="price">J$3,458.12</p>
                 <RouterLink :to="{name: 'ProductDetails', query: {id: '326cb180-f8da-4970-9efc-ce79f90d1131'} }" 
                   class="btn-book-a-table px-4"
-                  >Buy</RouterLink>
+                  >Buy</RouterLink> -->
               </div>
               <!-- Menu Item -->
             </div>
@@ -210,12 +210,12 @@
                   />
                 </RouterLink>
                 <h4>Balcony Connector 90%</h4>
-                <p class="price">J$2,586.38</p>
+                <!-- <p class="price">J$2,586.38</p>
                 <RouterLink
                   class="btn-book-a-table px-4"
                   :to="{name: 'ProductDetails', query: {id: 'feb7994a-c5d1-46cc-be93-208ae74e7e08'} }" 
                   >Buy</RouterLink
-                >
+                > -->
               </div>
               <!-- Menu Item -->
 
@@ -232,12 +232,12 @@
                 </RouterLink>
                 <h4>Balcony Tubing Satin</h4>
 
-                <p class="price">J$27,060.00</p>
+                <!-- <p class="price">J$27,060.00</p>
                 <RouterLink
                   class="btn-book-a-table px-4"
                   :to="{name: 'ProductDetails', query: {id: '8f4d1246-34ac-432d-96dd-2364cd623476'} }" 
                   >Buy</RouterLink
-                >
+                > -->
               </div>
               <!-- Menu Item -->
 
@@ -253,12 +253,12 @@
                   />
                 </RouterLink>
                 <h4>Balcony Tubing Connector</h4>
-                <p class="price">J$1,773.75</p>
+                <!-- <p class="price">J$1,773.75</p>
                 <RouterLink
                   class="btn-book-a-table px-4"
                   :to="{name: 'ProductDetails', query: {id: '3fdf1765-50ca-4eff-99d9-ca0f5713f769'} }" 
                   >Buy</RouterLink
-                >
+                > -->
               </div>
               <!-- Menu Item -->
             </div>
@@ -283,12 +283,12 @@
                   />
                 </RouterLink>
                 <h4>L-670 SINGLE SLIDING SHOWER</h4>
-                <p class="price">Click 'Buy' to see versions</p>
+                <!-- <p class="price">Click 'Buy' to see versions</p>
                 <RouterLink
                   class="btn-book-a-table px-4"
                   :to="{name: 'ProductDetails', query: {id: '139746e7-a7e2-4db3-81e6-15c72439b174'} }" 
                   >Buy</RouterLink
-                >
+                > -->
               </div>
               <!-- Menu Item -->
 
@@ -305,12 +305,12 @@
                 </RouterLink>
                 <h4>L-101 DOUBLE SLIDING SHOWER</h4>
 
-                <p class="price">Click 'Buy' to see versions</p>
+                <!-- <p class="price">Click 'Buy' to see versions</p>
                 <RouterLink
                   class="btn-book-a-table px-4"
                   :to="{name: 'ProductDetails', query: {id: '4a6d25ee-1b7b-4e38-9d11-6a2515eca9d0'} }" 
                   >Buy</RouterLink
-                >
+                > -->
               </div>
               <!-- Menu Item -->
 
@@ -326,12 +326,12 @@
                   />
                 </RouterLink>
                 <h4>L-104 SINGLE SLIDING SHOWER</h4>
-                <p class="price">Click 'Buy' to see versions</p>
+                <!-- <p class="price">Click 'Buy' to see versions</p>
                 <RouterLink
                   class="btn-book-a-table px-4"
                   :to="{name: 'ProductDetails', query: {id: '318e3bf2-9b1b-42fc-8cc6-b2fd2e8acc84'} }" 
                   >Buy</RouterLink
-                >
+                > -->
               </div>
               <!-- Menu Item -->
             </div>

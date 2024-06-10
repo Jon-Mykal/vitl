@@ -1,31 +1,4 @@
-<script setup>
-import TheWelcome from "../components/TheWelcome.vue";
-import banner from "../assets/img/Banner.jpg";
-const bannerImage = `background-image: url(${banner});`;
-const frostCss = `
-background: rgba(255, 255, 255, 0.06);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(4.4px);
--webkit-backdrop-filter: blur(4.4px);
-`;
-import { onMounted } from "vue";
-import axios from "axios";
-onMounted(async () => {
-  let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
-    
-// let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
-    sessionStorage.setItem("products", JSON.stringify(res.data["products"]));
-    sessionStorage.setItem("productsSource", JSON.stringify(res.data["productsSource"]));
-    sessionStorage.setItem("categories", JSON.stringify(res.data["categories"]));
-    
-  
-  
-  
-    
-  
-});
-</script>
+
 
 <template>
   <section
@@ -653,6 +626,38 @@ onMounted(async () => {
   </main>
 </template>
 <script setup>
+import TheWelcome from "../components/TheWelcome.vue";
+import banner from "../assets/img/Banner.jpg";
+import countapi from 'countapi-js';
+const bannerImage = `background-image: url(${banner});`;
+const frostCss = `
+background: rgba(255, 255, 255, 0.06);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4.4px);
+-webkit-backdrop-filter: blur(4.4px);
+`;
+import { onMounted } from "vue";
+import axios from "axios";
+onMounted(async () => {
+  let res = await axios.get("https://fygaroapi.fly.dev/api/productv2");
+    
+// let aluminiumCat =  categories.value.filter(c => c.name == "Aluminium")[0];
+    sessionStorage.setItem("products", JSON.stringify(res.data["products"]));
+    sessionStorage.setItem("productsSource", JSON.stringify(res.data["productsSource"]));
+    sessionStorage.setItem("categories", JSON.stringify(res.data["categories"]));
+    
+  
+  
+  
+    
+  
+});
+
+countapi.set('staging.virginsintltrading.com', 'home', 50);
+countapi.visits().then((result) => {
+    console.log(result.value);
+});
 </script>
 <style lang="css" scoped>
 .menu {

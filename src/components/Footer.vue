@@ -60,7 +60,7 @@
 
     <div class="container">
       <div class="copyright">
-        © Copyright <strong><span>Virgin's International Trading</span></strong
+        © Copyright <strong><span>Virgin's International Trading Limited</span></strong
         >. All Rights Reserved
       </div>
       <div class="credits">

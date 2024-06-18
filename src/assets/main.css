@@ -286,13 +286,23 @@ section {
   color: var(--color-primary);
 }
 
- a.btn-book-a-table,
+ a.btn-book-a-table, 
  a.btn-book-a-table:focus {
   font-size: 14px;
   color: #fff;
   background: var(--color-primary);
   padding: 8px 20px;
   /* margin-left: 30px; */
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+button.btn-book-a-table, 
+button.btn-book-a-table:focus {
+  font-size: 14px;
+  color: #fff;
+  background: var(--color-primary);
+  padding: 8px 20px;
   border-radius: 50px;
   transition: 0.3s;
 }

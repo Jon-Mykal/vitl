@@ -25,7 +25,7 @@
               <RouterLink :to="{ name: 'contact' }">Contact Us</RouterLink>
             </li>
             <li id="shopLink">
-              <RouterLink :to="{ name: 'shop' }" class="btn-book-a-table">Products</RouterLink>
+              <RouterLink :to="{ name: 'shop' }" class="btn-book-a-table">Our Products</RouterLink>
             </li>
           </ul>
         </nav>
